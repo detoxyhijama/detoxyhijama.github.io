@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; frame-src 'self' https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me;"/><meta http-equiv="X-Content-Type-Options" content="nosniff"/><meta name="referrer" content="strict-origin-when-cross-origin"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy | Detoxy Hijama</title>
+  <meta name="description" content="Privacy Policy for Detoxy Hijama — India's trusted hijama equipment manufacturer."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="manifest" href="/manifest.json"/>
+  <link rel="stylesheet" href="/assets/style.css"/><link rel="icon" type="image/png" href="/assets/images/favicon.png"/>
+</head>
+<body>
+<script src="/assets/js/monitor.js"></script>
+
+
+<div id="header-mount"></div>
+<main>
+  <div class="policy-wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">Home</a>
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      <span aria-current="page">Privacy Policy</span>
+    </nav>
+    <h1>Privacy Policy</h1>
+    <div class="policy-date">Last updated: March 2026 &nbsp;|&nbsp; Detoxy Hijama, Pollachi, Tamil Nadu</div>
+    <div id="policyContent">
+<p>Detoxy Hijama ("we", "us") is committed to protecting your personal data. This policy explains what we collect, how we use it, and your rights.</p>
+<h2>Information We Collect</h2>
+<p>When you place an order or create an account, we collect:</p>
+<ul>
+<li>Name, phone number, and email address</li>
+<li>Delivery address</li>
+<li>Order history and payment method (not card details)</li>
+<li>Anonymous website usage data (page views, device type)</li>
+</ul>
+<h2>How We Use Your Information</h2>
+<ul>
+<li>To process, fulfil, and ship your orders</li>
+<li>To send order confirmations, invoices, and delivery updates</li>
+<li>To respond to your customer service enquiries</li>
+<li>To send occasional promotional emails (you can unsubscribe at any time)</li>
+</ul>
+<h2>Data Sharing</h2>
+<p>We do not sell your personal data. We share only the minimum necessary information with:</p>
+<ul>
+<li>Shipping partners (name, phone, address) to deliver your order</li>
+<li>Razorpay (payment processor) for secure transaction processing</li>
+</ul>
+<h2>Data Security</h2>
+<p>All data is stored securely. Payment transactions are encrypted using SSL/TLS. We do not store credit or debit card numbers. Our systems follow standard security best practices.</p>
+<h2>Your Rights</h2>
+<p>You have the right to access, correct, or request deletion of your personal data at any time. Email us at <a href="mailto:detoxyhijama@gmail.com">detoxyhijama@gmail.com</a> to exercise these rights.</p>
+<h2>Cookies</h2>
+<p>We use essential cookies to remember your cart and login session. No advertising or third-party tracking cookies are used. You can disable cookies in your browser, but this may affect cart functionality.</p>
+<h2>Contact</h2>
+<p>Privacy concerns: <a href="mailto:detoxyhijama@gmail.com">detoxyhijama@gmail.com</a> | +91 95665 96077</p></div>
+  </div>
+</main>
+<div id="footer-mount"></div>
+<script src="/assets/js/shared.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {{
+  document.getElementById('header-mount').innerHTML = renderHeader('');
+  document.getElementById('footer-mount').innerHTML = renderFooter();
+  initSearch(); initMobileNav(); Cart.updateUI(); Wishlist.updateUI(); updateNavAuthLink(); initScrollTop();
+}});
+</script>
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js',{scope:'/'})
+      .then(function(reg){
+        // Check for updates every 60s (catches new deployments)
+        // Smart SW update: check every 5min + on visibility change
+        setInterval(function(){ reg.update().catch(function(){}); }, 300000);
+        document.addEventListener('visibilitychange', function(){ if(document.visibilityState==='active') reg.update().catch(function(){}); });
+      }).catch(function(){});
+  });
+}
+</script>
+</body>
+</html>

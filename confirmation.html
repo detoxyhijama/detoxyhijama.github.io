@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; frame-src 'self' https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me;"/>
+    <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+  <meta name="referrer" content="strict-origin-when-cross-origin"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Order Confirmed | Detoxy Hijama</title>
+  <meta name="robots" content="noindex,nofollow"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="manifest" href="/manifest.json"/>
+  <link rel="stylesheet" href="/assets/style.css"/>
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png"/>
+  <style>
+    body{background:var(--cream)}
+    .conf-wrap{max-width:680px;margin:40px auto;padding:0 20px 80px}
+    .conf-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow)}
+    /* Success banner */
+    .conf-banner{background:linear-gradient(135deg,var(--dark),var(--td));padding:36px 32px;text-align:center;color:#fff}
+    .conf-check{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+    .conf-check svg{width:32px;height:32px;color:#fff}
+    .conf-banner h1{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;margin-bottom:6px}
+    .conf-banner p{font-size:.85rem;opacity:.8;margin:0}
+    .conf-order-id{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:8px 16px;margin-top:14px;font-size:.9rem;font-weight:700}
+    /* Track progress */
+    .conf-track{padding:28px 32px;border-bottom:1px solid var(--border)}
+    .conf-track h3{font-size:.85rem;font-weight:700;color:var(--dark);text-transform:uppercase;letter-spacing:.07em;margin-bottom:20px}
+    .track-steps{display:flex;justify-content:space-between;position:relative}
+    .track-steps::before{content:'';position:absolute;top:16px;left:10%;right:10%;height:2px;background:var(--border)}
+    .track-steps::after{content:'';position:absolute;top:16px;left:10%;height:2px;background:var(--t);transition:width .6s ease;width:0%}
+    .t-step{display:flex;flex-direction:column;align-items:center;gap:8px;flex:1;position:relative;z-index:1}
+    .t-dot{width:34px;height:34px;border-radius:50%;border:2px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;transition:all .3s}
+    .t-dot svg{width:14px;height:14px;color:var(--muted)}
+    .t-step.done .t-dot{background:var(--t);border-color:var(--t)}
+    .t-step.done .t-dot svg{color:#fff}
+    .t-step.active .t-dot{border-color:var(--t);background:#fff;box-shadow:0 0 0 4px var(--tp)}
+    .t-step.active .t-dot svg{color:var(--t)}
+    .t-label{font-size:.68rem;font-weight:600;color:var(--muted);text-align:center}
+    .t-step.done .t-label,.t-step.active .t-label{color:var(--dark)}
+    /* Details */
+    .conf-details{padding:24px 32px;border-bottom:1px solid var(--border)}
+    .conf-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+    .conf-item label,.conf-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);display:block;margin-bottom:3px}
+    .conf-item span{font-size:.87rem;color:var(--dark);font-weight:500}
+    /* Items */
+    .conf-items{padding:0 32px 24px}
+    .conf-items h3{font-size:.85rem;font-weight:700;color:var(--dark);text-transform:uppercase;letter-spacing:.07em;margin-bottom:14px}
+    .oi{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)}
+    .oi:last-child{border-bottom:none}
+    .oi-img{width:44px;height:44px;border-radius:8px;object-fit:cover;border:1px solid var(--border);flex-shrink:0}
+    .oi-name{flex:1;font-size:.83rem;font-weight:600;color:var(--dark)}
+    .oi-price{font-size:.88rem;font-weight:700;color:var(--dark)}
+    /* Actions */
+    .conf-actions{padding:24px 32px;display:flex;gap:12px;flex-wrap:wrap;background:var(--cream)}
+    /* Track now panel */
+    .track-now{padding:20px 32px;background:var(--tp);border-top:2px solid var(--t)}
+    .track-now h4{font-size:.85rem;font-weight:700;color:var(--td);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+    .track-form{display:flex;gap:8px}
+    .track-form input{flex:1;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:.83rem;font-family:Outfit,sans-serif;outline:none}
+    .track-form input:focus{border-color:var(--t)}
+    .track-result-mini{margin-top:12px;font-size:.83rem}
+    /* ── Shipping Quote Banner (shown when admin has quoted) ── */
+    .ship-quote-banner{display:none;background:#fff;border:2px solid var(--t);border-radius:12px;padding:20px 24px;margin:0 32px 20px;position:relative}
+    .ship-quote-banner.show{display:block;animation:sqPulse .4s ease}
+    @keyframes sqPulse{from{transform:scale(.97);opacity:.6}to{transform:scale(1);opacity:1}}
+    .sqb-eyebrow{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--t);margin-bottom:6px}
+    .sqb-amount{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--dark);margin-bottom:4px}
+    .sqb-note{font-size:.82rem;color:var(--muted);margin-bottom:16px;line-height:1.5}
+    .sqb-actions{display:flex;gap:10px;flex-wrap:wrap}
+    /* ── Shipping quote notice in order card ── */
+    .ship-pending-notice{background:linear-gradient(135deg,#fffbeb,#fef3c7);border:1px solid #f59e0b;border-radius:10px;padding:14px 18px;margin:0 32px 0;display:flex;align-items:flex-start;gap:12px}
+    .ship-pending-notice svg{color:#f59e0b;flex-shrink:0;margin-top:1px}
+    .ship-pending-notice p{font-size:.82rem;color:#78350f;line-height:1.55;margin:0}
+    .ship-pending-notice strong{color:#92400e}
+    @media(max-width:540px){
+      .conf-grid{grid-template-columns:1fr}
+      .conf-banner,.conf-details,.conf-items,.conf-track,.track-now{padding-left:20px;padding-right:20px}
+      .conf-actions{padding:20px}
+      .ship-quote-banner,.ship-pending-notice{margin-left:16px;margin-right:16px}
+    }
+  </style>
+</head>
+<body>
+<script src="/assets/js/monitor.js"></script>
+
+
+<div id="header-mount"></div>
+
+<div class="conf-wrap">
+  <div class="conf-card" id="confirmCard">
+
+    <!-- Success Banner -->
+    <div class="conf-banner">
+      <div class="conf-check">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+        </svg>
+      </div>
+      <h1>Order Placed Successfully!</h1>
+      <p>We'll dispatch your order within 24 hours. You'll receive updates via phone/SMS.</p>
+      <div class="conf-order-id">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/></svg>
+        <span id="orderIdDisplay">Loading...</span>
+      </div>
+    </div>
+
+    <!-- Shipping Quote Banner (hidden until admin quotes) -->
+    <div class="ship-quote-banner" id="shipQuoteBanner">
+      <div class="sqb-eyebrow">🚚 Shipping Quote Ready</div>
+      <div class="sqb-amount" id="sqbAmount">₹0</div>
+      <div class="sqb-note" id="sqbNote">Our team has quoted your shipping charge. Please confirm your order to proceed to dispatch.</div>
+      <div class="sqb-actions">
+        <button class="btn btn-primary" onclick="confirmOrderWithShipping()">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+          Confirm &amp; Proceed
+        </button>
+        <a href="https://wa.me/919566596077" target="_blank" rel="noopener" class="btn btn-outline">Query on WhatsApp</a>
+      </div>
+    </div>
+
+    <!-- Shipping Pending Notice (shown until admin quotes) -->
+    <div class="ship-pending-notice" id="shipPendingNotice" style="margin-top:20px;margin-bottom:0">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:18px;height:18px"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <p><strong>Shipping amount will be confirmed shortly.</strong> Our team will quote your shipping within working hours. You will see the amount here and in your account page — please confirm to proceed to dispatch.</p>
+    </div>
+    <div class="conf-track">
+      <h3>Order Status</h3>
+      <div class="track-steps" id="trackSteps">
+        <div class="t-step active" id="ts-placed">
+          <div class="t-dot"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/></svg></div>
+          <div class="t-label">Placed</div>
+        </div>
+        <div class="t-step" id="ts-confirmed">
+          <div class="t-dot"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div>
+          <div class="t-label">Confirmed</div>
+        </div>
+        <div class="t-step" id="ts-dispatched">
+          <div class="t-dot"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 5H4m0 0l4 4m-4-4l4-4"/></svg></div>
+          <div class="t-label">Dispatched</div>
+        </div>
+        <div class="t-step" id="ts-delivered">
+          <div class="t-dot"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>
+          <div class="t-label">Delivered</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Details -->
+    <div class="conf-details">
+      <div class="conf-grid" id="orderDetails"></div>
+    </div>
+
+    <!-- Ordered Items -->
+    <div class="conf-items">
+      <h3>Items Ordered</h3>
+      <div id="orderedItems"></div>
+    </div>
+
+    <!-- Track Now -->
+    <div class="track-now">
+      <h4>
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        Track Your Order
+      </h4>
+      <div class="track-form">
+        <input type="text" id="trackId" placeholder="Enter Order ID" style="max-width:180px"/>
+        <input type="tel" id="trackPhone" placeholder="Phone number"/>
+        <button class="btn btn-primary btn-sm" onclick="liveTrackOrder()">Track</button>
+      </div>
+      <div id="trackResultMini" class="track-result-mini"></div>
+    </div>
+
+    <!-- Actions -->
+    <div class="conf-actions">
+      <a href="/index.html" class="btn btn-primary">Continue Shopping</a>
+      <a href="/account.html" class="btn btn-outline">View My Orders</a>
+      <a href="/track-order.html" class="btn btn-outline">Full Tracking Page</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- Complete Your Kit — post-order upsell -->
+<section class="container" id="confirmUpsellSection" style="padding:48px 0 80px;border-top:1px solid var(--border);margin-top:0;display:none">
+  <div id="confirmUpsell"></div>
+</section>
+
+<div id="footer-mount"></div>
+<script src="/assets/js/shared.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var hm = document.getElementById('header-mount');
+  if (hm) {
+    var frag = document.createRange().createContextualFragment(renderHeader(''));
+    hm.replaceWith(frag);
+    Cart.updateUI(); if(typeof Wishlist!=="undefined") Wishlist.updateUI(); initSearch(); initMobileNav(); if(typeof initScrollTop==="function") initScrollTop(); updateNavAuthLink();
+  }
+  var fm = document.getElementById('footer-mount');
+  if (fm) fm.outerHTML = renderFooter();
+
+  var _initUpsell = function(){
+    if(typeof DHIntel === 'undefined' || typeof renderCrossSellWidget === 'undefined') return;
+    var order; try { order = JSON.parse(localStorage.getItem('dh_last_order') || 'null'); } catch(e){}
+    var firstId = order && order.items && order.items[0] ? order.items[0].id : null;
+    var upsells = firstId ? DHIntel.getRecommendations(firstId, 4) : DHIntel.getCartCrossSells(4);
+    if(!upsells.length) return;
+    var sec = document.getElementById('confirmUpsellSection'); var el = document.getElementById('confirmUpsell');
+    if(!sec || !el) return;
+    sec.style.display = 'block';
+    el.innerHTML = '<div class="cs-head" style="margin-bottom:20px"><h3 class="cs-title">Complete your kit</h3><p style="color:var(--muted);font-size:.9rem;margin-top:8px">Customers who bought this also added these to their practice.</p></div><div class="cs-grid">' + upsells.map(function(p,i){ return renderProductCard(p,i); }).join('') + '</div>';
+    if(typeof initAnimateOnScroll === 'function') initAnimateOnScroll();
+  };
+  document.addEventListener('productsUpdated', _initUpsell, {once:true});
+  setTimeout(_initUpsell, 600);
+
+  var order;
+  try { order = JSON.parse(localStorage.getItem('dh_last_order') || 'null'); } catch(e){}
+
+  if (!order) {
+    document.getElementById('confirmCard').innerHTML = '<div style="padding:48px;text-align:center"><h2 style="font-family:Cormorant Garamond,serif;color:var(--dark);margin-bottom:10px">No recent order found</h2><p style="color:var(--muted);margin-bottom:20px">Return to the shop to place an order.</p><a href="/index.html" class="btn btn-primary">Go Home</a></div>';
+    return;
+  }
+
+  document.getElementById('orderIdDisplay').textContent = 'Order #' + order.orderId;
+  if (order.orderId) document.getElementById('trackId').value = order.orderId;
+  if (order.phone)   document.getElementById('trackPhone').value = order.phone;
+
+  function applyStepperStatus(status) {
+    var statusMap = {pending:0, quoted:0, confirmed:1, dispatched:2, delivered:3};
+    var step = statusMap[status] !== undefined ? statusMap[status] : 0;
+    ['ts-placed','ts-confirmed','ts-dispatched','ts-delivered'].forEach(function(id, i) {
+      var el = document.getElementById(id); if (!el) return;
+      el.classList.remove('done','active');
+      if (i < step) el.classList.add('done'); else if (i === step) el.classList.add('active');
+    });
+  }
+  applyStepperStatus('pending');
+
+  document.getElementById('orderDetails').innerHTML =
+    '<div class="conf-item"><span class="conf-label">Customer Name</span><span>' + (order.name||'—') + '</span></div>' +
+    '<div class="conf-item"><span class="conf-label">Mobile</span><span>' + (order.phone||'—') + '</span></div>' +
+    '<div class="conf-item" style="grid-column:1/-1"><span class="conf-label">Delivery Address</span><span>' + [order.address, order.city, order.state, order.pincode].filter(Boolean).join(', ') + '</span></div>' +
+    '<div class="conf-item"><span class="conf-label">Payment</span><span>' + (order.payment==='cod'?'Cash on Delivery':order.payment==='upi'?'UPI/Bank Transfer':'WhatsApp Order') + '</span></div>' +
+    '<div class="conf-item"><span class="conf-label">Order Total (excl. shipping)</span><span style="font-weight:700;font-size:1rem">' + fmtINR(order.total) + '</span></div>';
+
+  document.getElementById('orderedItems').innerHTML = (order.items || []).map(function(item) {
+    var p = PRODUCTS.find(function(x){ return x.id === item.id; });
+    var img = p && p.images && p.images[0] ? '/'+p.images[0] : '/assets/images/placeholder.svg';
+    return '<div class="oi"><img loading="lazy" decoding="async" src="' + img + '" alt="' + item.name + '" class="oi-img" onerror="this.src='/assets/images/placeholder.svg'">' +
+      '<div class="oi-name">' + item.name + ' <span style="color:var(--muted);font-weight:400">x' + item.qty + '</span>' +
+      (item.size ? ' <span style="background:var(--tp);color:var(--td);font-size:.7rem;padding:2px 7px;border-radius:50px;font-weight:600">' + item.size + '</span>' : '') +
+      '</div><div class="oi-price">' + fmtINR(item.price * item.qty) + '</div></div>';
+  }).join('');
+
+  // ── Shipping Quote Polling ────────────────────────────────────────────
+  var _shippingConfirmed = (order.status === 'confirmed');
+  var _pollTimer = null;
+
+  function _checkShippingQuote() {
+    if (_shippingConfirmed || !order.orderId) return;
+    var apiUrl = window.DH_API_URL || (function(){ try { return localStorage.getItem('detoxy_sheets_url')||''; } catch(e){ return ''; }}());
+    if (!apiUrl) return;
+    fetch(apiUrl + '?action=getOrder&orderId=' + encodeURIComponent(order.orderId), { redirect: 'follow', mode: 'cors' })
+      .then(function(r){ return r.text(); })
+      .then(function(text){
+        var clean = text.replace(/^\uFEFF/,'').trim();
+        if (clean.charAt(0) === '<') return;
+        var data; try { data = JSON.parse(clean); } catch(e){ return; }
+        var o = data && data.order ? data.order : null;
+        if (!o) return;
+        applyStepperStatus(o.status);
+        if (o.shipping_status === 'quoted' && o.shipping_quote && !_shippingConfirmed) {
+          var amount = Number(o.shipping_quote);
+          document.getElementById('sqbAmount').textContent = 'Rs.' + amount.toLocaleString('en-IN') + ' shipping';
+          document.getElementById('sqbNote').textContent = 'Our team has quoted Rs.' + amount.toLocaleString('en-IN') + ' shipping to ' + (o.city || 'your location') + '. Confirm to proceed to dispatch.';
+          document.getElementById('shipQuoteBanner').classList.add('show');
+          document.getElementById('shipPendingNotice').style.display = 'none';
+          order.shippingQuote = amount;
+          try { localStorage.setItem('dh_last_order', JSON.stringify(order)); } catch(e) {}
+          if (_pollTimer) { clearInterval(_pollTimer); _pollTimer = null; }
+        }
+        if (o.status === 'confirmed') {
+          _shippingConfirmed = true;
+          document.getElementById('shipQuoteBanner').style.display = 'none';
+          document.getElementById('shipPendingNotice').style.display = 'none';
+          if (_pollTimer) { clearInterval(_pollTimer); _pollTimer = null; }
+        }
+      }).catch(function(){});
+  }
+
+  // If already confirmed, hide shipping banners
+  if (_shippingConfirmed) {
+    document.getElementById('shipPendingNotice').style.display = 'none';
+    document.getElementById('shipQuoteBanner').style.display = 'none';
+  } else {
+    setTimeout(_checkShippingQuote, 2000);
+    _pollTimer = setInterval(_checkShippingQuote, 60000);
+  }
+});
+
+function confirmOrderWithShipping() {
+  var order; try { order = JSON.parse(localStorage.getItem('dh_last_order') || 'null'); } catch(e) {}
+  if (!order || !order.orderId) { showToast('Order not found', 'error'); return; }
+  var apiUrl = window.DH_API_URL || (function(){ try { return localStorage.getItem('detoxy_sheets_url')||''; } catch(e){ return ''; }}());
+  if (!apiUrl) { showToast('Please contact us on WhatsApp to confirm.', 'error'); return; }
+  var btn = document.querySelector('.sqb-actions .btn-primary');
+  if (btn) { btn.disabled = true; btn.textContent = 'Confirming...'; }
+  fetch(apiUrl, {
+    method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ action: 'respondShipping', order_id: order.orderId, response: 'accepted' }),
+    redirect: 'follow', mode: 'cors'
+  }).then(function(r){ return r.text(); }).then(function(text){
+    var clean = text.replace(/^﻿/,'').trim();
+    var data; try { data = JSON.parse(clean); } catch(e) { data = {}; }
+    if (data.success || data.ok) {
+      document.getElementById('shipQuoteBanner').innerHTML = '<div style="display:flex;align-items:center;gap:12px"><div style="width:36px;height:36px;border-radius:50%;background:var(--success);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="2.5" style="width:18px;height:18px"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg></div><div><div style="font-weight:700;color:var(--dark)">Order Confirmed!</div><div style="font-size:.82rem;color:var(--muted)">Your order will be dispatched soon. Check your account for updates.</div></div></div>';
+      ['ts-placed'].forEach(function(id){ var e=document.getElementById(id); if(e){e.classList.remove('active');e.classList.add('done');} });
+      var tc = document.getElementById('ts-confirmed'); if(tc){tc.classList.remove('active'); tc.classList.add('active');}
+      showToast('Order confirmed! We will dispatch soon.', 'success');
+    } else {
+      if (btn) { btn.disabled = false; btn.textContent = 'Confirm & Proceed'; }
+      showToast(data.error || 'Could not confirm. Please try again.', 'error');
+    }
+  }).catch(function(){
+    if (btn) { btn.disabled = false; btn.textContent = 'Confirm & Proceed'; }
+    showToast('Connection error. Please try WhatsApp.', 'error');
+  });
+}
+function liveTrackOrder() {
+  var orderId = document.getElementById('trackId').value.trim().toUpperCase();
+  var phone   = document.getElementById('trackPhone').value.trim();
+  var result  = document.getElementById('trackResultMini');
+  if (!orderId) { result.innerHTML = '<span style="color:var(--danger)">Please enter an Order ID.</span>'; return; }
+
+  result.innerHTML = '<span style="color:var(--muted)">Looking up…</span>';
+  var apiUrl = '';
+  try { apiUrl = window.DH_API_URL || (function(){try{return localStorage.getItem('detoxy_sheets_url')||'';}catch(e){return '';}})() || ''; } catch(e){}
+
+  function showResult(o) {
+    if (!o) { result.innerHTML = '<span style="color:var(--danger)">Order not found. Check ID and phone number.</span>'; return; }
+    var statusLabels = {pending:'⏳ Pending',confirmed:'✅ Confirmed',dispatched:'🚚 Dispatched',delivered:'📦 Delivered',cancelled:'❌ Cancelled'};
+    var courier = (o.courier_name||o.tracking_number) ? ' &nbsp;|&nbsp; ' + (o.courier_name||'') + (o.tracking_number?' AWB: '+o.tracking_number:'') : '';
+    var trackLink = o.tracking_url ? ' <a href="'+o.tracking_url+'" target="_blank" rel="noopener noreferrer" style="color:var(--t);font-weight:700">Track Shipment →</a>' : '';
+    result.innerHTML =
+      '<div style="background:#fff;border-radius:8px;padding:12px 14px;border:1px solid var(--border);margin-top:4px">' +
+      '<div style="font-weight:700;color:var(--dark)">' + (statusLabels[o.status]||o.status) + '</div>' +
+      '<div style="font-size:.78rem;color:var(--muted);margin-top:3px">' + courier + trackLink + '</div>' +
+      '</div>';
+    // Update stepper
+    var stepMap = {pending:0,confirmed:1,dispatched:2,delivered:3};
+    var s = stepMap[o.status]||0;
+    ['ts-placed','ts-confirmed','ts-dispatched','ts-delivered'].forEach(function(id,i){
+      var el=document.getElementById(id); if(!el) return;
+      el.classList.remove('done','active');
+      if(i<s) el.classList.add('done'); else if(i===s) el.classList.add('active');
+    });
+  }
+
+  if (apiUrl) {
+    fetch(apiUrl+'?action=trackOrder&orderId='+encodeURIComponent(orderId)+'&phone='+encodeURIComponent(phone),{redirect:'follow'})
+      .then(function(r){return r.json();})
+      .then(function(d){showResult(d.order||null);})
+      .catch(function(){showResult(null);});
+  } else { showResult(null); }
+}
+</script>
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js',{scope:'/'})
+      .then(function(reg){
+        // Check for updates every 60s (catches new deployments)
+        // Smart SW update: check every 5min + on visibility change
+        setInterval(function(){ reg.update().catch(function(){}); }, 300000);
+        document.addEventListener('visibilitychange', function(){ if(document.visibilityState==='active') reg.update().catch(function(){}); });
+      }).catch(function(){});
+  });
+}
+</script>
+</body>
+</html>

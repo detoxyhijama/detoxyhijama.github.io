@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; frame-src 'self' https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me;"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex, nofollow"/>
+  <title>You're Offline | Detoxy Hijama</title>
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --t: #57a2a0; --dark: #1a3938; --cream: #f8f5f0;
+      --muted: #6b7280; --border: rgba(0,0,0,.1);
+      --font-sans: 'Outfit', sans-serif; --font-serif: 'Cormorant Garamond', serif;
+    }
+    body { font-family: var(--font-sans); background: var(--cream); color: var(--dark); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 40px 20px; }
+    .wrap { text-align: center; max-width: 480px; }
+    .icon { width: 72px; height: 72px; background: rgba(87,162,160,.12); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; }
+    .icon svg { width: 36px; height: 36px; color: var(--t); }
+    h1 { font-family: var(--font-serif); font-size: clamp(2rem,5vw,2.8rem); font-weight: 700; margin-bottom: 12px; }
+    p { color: var(--muted); line-height: 1.75; margin-bottom: 32px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 10px; font-weight: 600; font-size: .9rem; font-family: var(--font-sans); cursor: pointer; text-decoration: none; border: none; transition: all .2s; }
+    .btn-primary { background: var(--dark); color: #fff; }
+    .btn-primary:hover { background: var(--t); }
+    .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .cached-notice { margin-top: 40px; padding: 16px; background: rgba(87,162,160,.08); border: 1px solid rgba(87,162,160,.2); border-radius: 10px; font-size: .84rem; color: var(--muted); line-height: 1.6; }
+    .cached-notice strong { color: var(--dark); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="icon">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01" class="slash"/>
+      </svg>
+    </div>
+    <h1>You're offline</h1>
+    <p>It looks like you've lost your internet connection. Some cached pages may still be available. Reconnect and try again.</p>
+    <div class="actions">
+      <button class="btn btn-primary" onclick="window.location.reload()">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+        Try again
+      </button>
+      <a href="/" class="btn btn-primary" style="background:transparent;color:var(--dark);border:1.5px solid var(--border)">Go Home</a>
+    </div>
+    <div class="cached-notice">
+      <strong>Tip:</strong> Pages you've visited recently may be available offline. Try navigating to <a href="/products.html" style="color:var(--t)">Products</a> or <a href="/cart.html" style="color:var(--t)">your cart</a>.
+    </div>
+  </div>
+  <script>
+    window.addEventListener('online', function() {
+      document.querySelector('.btn-primary').click();
+    });
+  </script>
+</body>
+</html>

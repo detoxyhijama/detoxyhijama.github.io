@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; frame-src 'self' https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me;"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex, nofollow"/>
+  <title>Page Not Found | Detoxy Hijama</title>
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="manifest" href="/manifest.json"/>
+  <link rel="stylesheet" href="/assets/style.css"/>
+  <style>
+    .e404-wrap{min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 20px;gap:20px}
+    .e404-num{font-family:'Cormorant Garamond',serif;font-size:clamp(6rem,20vw,12rem);font-weight:700;color:var(--tp2);line-height:1;margin-bottom:0}
+    .e404-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:600;color:var(--dark);margin:0}
+    .e404-desc{color:var(--muted);font-size:.95rem;max-width:420px;line-height:1.7}
+    .e404-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+    .e404-search{display:flex;gap:0;border:1.5px solid var(--border);border-radius:10px;overflow:hidden;max-width:380px;width:100%;background:var(--white)}
+    .e404-search input{flex:1;padding:12px 16px;border:none;outline:none;font-family:'Outfit',sans-serif;font-size:.9rem;color:var(--dark);background:transparent}
+    .e404-search button{background:var(--dark);color:#fff;border:none;padding:0 20px;cursor:pointer;font-size:.85rem;font-weight:600;font-family:'Outfit',sans-serif;transition:background .2s;white-space:nowrap}
+    .e404-search button:hover{background:var(--t)}
+  </style>
+</head>
+<body>
+<script src="/assets/js/monitor.js"></script>
+
+
+<div id="header-mount"></div>
+<main>
+  <div class="container e404-wrap">
+    <p class="e404-num">404</p>
+    <h1 class="e404-title">Page not found</h1>
+    <p class="e404-desc">The page you're looking for has moved, or doesn't exist. Try searching for what you need, or browse our products.</p>
+    <div class="e404-search">
+      <input type="text" id="s404" placeholder="Search products…" onkeydown="if(event.key==='Enter')go404()"/>
+      <button onclick="go404()">Search</button>
+    </div>
+    <div class="e404-actions">
+      <a href="/" class="btn btn-primary">Go Home</a>
+      <a href="/products.html" class="btn btn-outline">Browse Products</a>
+      <a href="/contact.html" class="btn btn-outline">Contact Us</a>
+    </div>
+  </div>
+</main>
+<div id="footer-mount"></div>
+<script src="/assets/js/shared.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var hm = document.getElementById('header-mount');
+  if(hm){ var frag=document.createRange().createContextualFragment(renderHeader('')); hm.replaceWith(frag); Cart.updateUI(); initSearch(); initMobileNav(); updateNavAuthLink(); }
+  var fm = document.getElementById('footer-mount');
+  if(fm) fm.outerHTML = renderFooter();
+  initScrollTop(); initAnimateOnScroll();
+});
+function go404(){
+  var v = document.getElementById('s404').value.trim();
+  if(v) window.location.href = '/products.html?q='+encodeURIComponent(v);
+}
+</script>
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js',{scope:'/'})
+      .then(function(reg){
+        // Check for updates every 60s (catches new deployments)
+        // Smart SW update: check every 5min + on visibility change
+        setInterval(function(){ reg.update().catch(function(){}); }, 300000);
+        document.addEventListener('visibilitychange', function(){ if(document.visibilityState==='active') reg.update().catch(function(){}); });
+      }).catch(function(){});
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; frame-src 'self' https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me;"/><meta http-equiv="X-Content-Type-Options" content="nosniff"/><meta name="referrer" content="strict-origin-when-cross-origin"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shipping Policy | Detoxy Hijama</title>
+  <meta name="description" content="Shipping Policy for Detoxy Hijama — India's trusted hijama equipment manufacturer."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="manifest" href="/manifest.json"/>
+  <link rel="stylesheet" href="/assets/style.css"/><link rel="icon" type="image/png" href="/assets/images/favicon.png"/>
+</head>
+<body>
+<script src="/assets/js/monitor.js"></script>
+
+
+<div id="header-mount"></div>
+<main>
+  <div class="policy-wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">Home</a>
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      <span aria-current="page">Shipping Policy</span>
+    </nav>
+    <h1>Shipping Policy</h1>
+    <div class="policy-date">Last updated: March 2026 &nbsp;|&nbsp; Detoxy Hijama, Pollachi, Tamil Nadu</div>
+    <div id="policyContent">
+<div class="policy-highlight">📦 <strong>Free Shipping</strong> on all orders above ₹999. Flat ₹60 for orders below ₹999.</div>
+<h2>Shipping Zones</h2>
+<p>We deliver to all 28 states and 8 union territories of India. No pin code is too remote — COD available everywhere.</p>
+<h2>Dispatch Time</h2>
+<p>Orders placed before 3:00 PM (Monday–Saturday) are dispatched the same day. Orders after 3 PM or on Sundays and public holidays ship the next business day.</p>
+<h2>Delivery Timeline</h2>
+<ul>
+<li><strong>Tamil Nadu metros:</strong> 1–2 business days</li>
+<li><strong>Major metros (Mumbai, Delhi, Bangalore, Hyderabad, Chennai):</strong> 2–3 business days</li>
+<li><strong>Tier-2 cities:</strong> 3–5 business days</li>
+<li><strong>Remote and rural areas:</strong> 5–7 business days</li>
+</ul>
+<h2>Shipping Partners</h2>
+<p>We ship via trusted couriers including Delhivery, DTDC, Speed Post, and Blue Dart. You will receive tracking information via SMS and email after dispatch.</p>
+<h2>COD Availability</h2>
+<p>Cash on Delivery is available at no extra charge across all serviceable pin codes in India.</p>
+<h2>Damaged in Transit</h2>
+<p>If your parcel arrives damaged or tampered with, photograph it immediately and contact us at <a href="mailto:detoxyhijama@gmail.com">detoxyhijama@gmail.com</a> within 24 hours. We will arrange a free replacement.</p>
+<h2>Contact Us</h2>
+<p>For shipping enquiries: <a href="tel:+919566596077">+91 95665 96077</a> or <a href="mailto:detoxyhijama@gmail.com">detoxyhijama@gmail.com</a></p></div>
+  </div>
+</main>
+<div id="footer-mount"></div>
+<script src="/assets/js/shared.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {{
+  document.getElementById('header-mount').innerHTML = renderHeader('');
+  document.getElementById('footer-mount').innerHTML = renderFooter();
+  initSearch(); initMobileNav(); Cart.updateUI(); Wishlist.updateUI(); updateNavAuthLink(); initScrollTop();
+}});
+</script>
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js',{scope:'/'})
+      .then(function(reg){
+        // Check for updates every 60s (catches new deployments)
+        // Smart SW update: check every 5min + on visibility change
+        setInterval(function(){ reg.update().catch(function(){}); }, 300000);
+        document.addEventListener('visibilitychange', function(){ if(document.visibilityState==='active') reg.update().catch(function(){}); });
+      }).catch(function(){});
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; frame-src 'self' https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me;"/>
+    <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+  <meta name="referrer" content="strict-origin-when-cross-origin"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Account | Detoxy Hijama</title>
+  <meta name="description" content="Login or create your Detoxy Hijama account to track orders and manage your profile."/>
+  <meta name="robots" content="noindex,nofollow"/>
+  <link rel="canonical" href="https://detoxyhijama.github.io/login.html"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="manifest" href="/manifest.json"/>
+  <link rel="stylesheet" href="/assets/style.css"/>
+  <style>
+    body { background: var(--cream); min-height: 100vh; display: flex; flex-direction: column; }
+    .login-wrapper { flex: 1; display: flex; align-items: center; justify-content: center; padding: 48px 20px; }
+    .login-card { background: #fff; border-radius: 24px; padding: 44px 36px; width: 100%; max-width: 420px; border: 1px solid var(--border); box-shadow: var(--shadow-lg); }
+    .login-logo { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 28px; }
+    .login-logo-mark { display: none; } /* replaced by real logo */
+    .login-logo-img { width: 46px; height: 46px; border-radius: 12px; object-fit: cover; flex-shrink: 0; }
+    .login-logo-name { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 700; color: var(--dark); }
+    .login-tabs { display: flex; border-bottom: 2px solid var(--border); margin-bottom: 28px; }
+    .login-tab { flex: 1; padding: 12px; text-align: center; font-size: .85rem; font-weight: 600; color: var(--muted); cursor: pointer; border: none; background: none; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: var(--transition); font-family: var(--font-sans); }
+    .login-tab.active { color: var(--t); border-bottom-color: var(--t); }
+    .divider { display: flex; align-items: center; gap: 12px; margin: 20px 0; color: var(--muted); font-size: .78rem; }
+    .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .wa-btn { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 13px; background: #f0fdf4; border: 1.5px solid #22c55e; border-radius: 12px; color: #166534; font-weight: 700; font-size: .88rem; cursor: pointer; transition: var(--transition); text-decoration: none; width: 100%; box-sizing: border-box; }
+    .wa-btn:hover { background: #dcfce7; }
+    .wa-btn svg { width: 19px; height: 19px; }
+    #tabLogin, #tabRegister { display: block; }
+  </style>
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png"/>
+  <link rel="apple-touch-icon" href="/assets/images/logo-192.png"/>
+</head>
+<body>
+<script src="/assets/js/monitor.js"></script>
+
+
+<div id="header-mount" data-page=""></div>
+
+<div class="login-wrapper">
+  <div class="login-card">
+    <div class="login-logo">
+      <img src="/assets/images/logo.png" alt="Detoxy Hijama" class="login-logo-img" width="46" height="46" loading="eager"/>
+      <span class="login-logo-name">Detoxy Hijama</span>
+    </div>
+
+    <div class="login-tabs">
+      <button class="login-tab active" id="btnLogin" onclick="switchTab('Login')">Sign In</button>
+      <button class="login-tab" id="btnRegister" onclick="switchTab('Register')">Create Account</button>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <div id="tabLogin">
+      <div id="loginAlert"></div>
+      <div class="form-group">
+        <label class="form-label" for="loginEmail">Email Address</label>
+        <input type="email" id="loginEmail" class="form-control" placeholder="your@email.com" autocomplete="email"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="loginPass">Password</label>
+        <input type="password" id="loginPass" class="form-control" placeholder="Your password" autocomplete="current-password"/>
+      </div>
+      <button class="btn btn-primary btn-block" onclick="doLogin()" style="margin-top:4px">Sign In</button>
+      <div class="divider">or continue with</div>
+      
+    </div>
+
+    <!-- REGISTER FORM -->
+    <div id="tabRegister" style="display:none">
+      <div id="registerAlert"></div>
+      <div class="form-group">
+        <label class="form-label" for="regName">Full Name</label>
+        <input type="text" id="regName" class="form-control" placeholder="Your full name" autocomplete="name"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="regEmail">Email Address</label>
+        <input type="email" id="regEmail" class="form-control" placeholder="your@email.com" autocomplete="email"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="regPhone">Mobile Number</label>
+        <input type="tel" id="regPhone" class="form-control" placeholder="+91 98765 43210" autocomplete="tel"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="regPass">Password</label>
+        <input type="password" id="regPass" class="form-control" placeholder="At least 6 characters" autocomplete="new-password"/>
+      </div>
+      <button class="btn btn-primary btn-block" onclick="doRegister()" style="margin-top:4px">Create Account</button>
+    </div>
+
+    <p style="text-align:center;font-size:.75rem;color:var(--muted);margin-top:20px">
+      <a href="/index.html" style="color:var(--t)">Continue as Guest</a> — no account needed to order
+    </p>
+  </div>
+</div>
+
+<div id="footer-mount"></div>
+<script src="/assets/js/shared.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // SECURITY: Sanitize redirect param — only allow same-origin paths (must start with /)
+  function _safeRedir(url) {
+    if (!url) return '/account.html';
+    // Reject anything that doesn't start with / or tries protocol-relative URLs
+    if (!url.startsWith('/') || url.startsWith('//')) return '/account.html';
+    return url;
+  }
+
+  var hm = document.getElementById('header-mount');
+  if (hm) {
+    var frag = document.createRange().createContextualFragment(renderHeader(''));
+    hm.replaceWith(frag);
+    Cart.updateUI(); if(typeof Wishlist!=="undefined") Wishlist.updateUI(); initSearch(); initMobileNav(); if(typeof initScrollTop==="function") initScrollTop();
+  }
+  var fm = document.getElementById('footer-mount');
+  if (fm) fm.outerHTML = renderFooter();
+
+  // Auto-fill if already logged in
+  var user = null;
+  try { user = JSON.parse(localStorage.getItem('dh_user') || 'null'); } catch(e) {}
+  if (user) {
+    var redir = new URLSearchParams(window.location.search).get('redirect') || '/account.html';
+    window.location.href = redir;
+    return;
+  }
+  var urlMsg = new URLSearchParams(window.location.search).get('msg');
+  if (urlMsg === 'login_to_order') {
+    var aEl = document.getElementById('loginAlert');
+    if (aEl) aEl.innerHTML = '<div style="background:#fef3c7;color:#92400e;padding:11px 14px;border-radius:8px;margin-bottom:14px;font-size:.83rem;border-left:3px solid #d97706">⚠️ Please sign in or create an account to place your order.</div>';
+  }
+});
+
+function switchTab(tab) {
+  document.getElementById('tabLogin').style.display = tab === 'Login' ? 'block' : 'none';
+  document.getElementById('tabRegister').style.display = tab === 'Register' ? 'block' : 'none';
+  document.getElementById('btnLogin').classList.toggle('active', tab === 'Login');
+  document.getElementById('btnRegister').classList.toggle('active', tab === 'Register');
+}
+
+function doLogin() {
+  var email = document.getElementById('loginEmail').value.trim();
+  var pass = document.getElementById('loginPass').value;
+  var alertEl = document.getElementById('loginAlert');
+
+  if (!email || !pass) { alertEl.innerHTML = '<div class="alert alert-error">Please fill in all fields.</div>'; return; }
+
+  var url = window.DH_API_URL || (function(){try{return localStorage.getItem('detoxy_sheets_url')||'';}catch(e){return '';}})();
+  if (!url) {
+    // Local demo mode
+    var demoUser = { id: 'demo', name: 'Guest User', email: email };
+    localStorage.setItem('dh_user', JSON.stringify(demoUser));
+    var redir = _safeRedir(new URLSearchParams(window.location.search).get('redirect')); window.location.href = redir || '/account.html';
+    return;
+  }
+
+  alertEl.innerHTML = '<div class="alert alert-info">Signing in...</div>';
+
+  // GAS Web Apps with redirect:follow can fail on CORS pre-flight in some browsers.
+  // We use text/plain content-type (no pre-flight) + manual redirect follow.
+  function _gasPost(payload, onSuccess, onFail) {
+    fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload),
+      redirect: 'follow',
+      mode: 'cors'
+    })
+    .then(function(r) { return r.text(); })
+    .then(function(text) {
+      // Strip any BOM or whitespace GAS sometimes prepends
+      var clean = text.replace(/^\uFEFF/, '').trim();
+      var data;
+      try { data = JSON.parse(clean); } catch(e) {
+        // GAS returned HTML error page (quota exceeded / deploy issue)
+        onFail('Service temporarily unavailable. Please try again in a moment.');
+        return;
+      }
+      onSuccess(data);
+    })
+    .catch(function(err) {
+      console.warn('[Detoxy] Login fetch error:', err);
+      // Network-level failure — could be CORS, offline, or GAS cold-start timeout
+      onFail('Connection issue. Please check your internet and try again. If the problem persists, contact us on WhatsApp.');
+    });
+  }
+
+  _gasPost(
+    { action: 'login', email: email, password: pass },
+    function(data) {
+      if (data.success) {
+        alertEl.innerHTML = '<div class="alert alert-success">Signed in! Redirecting...</div>';
+        localStorage.setItem('dh_user', JSON.stringify(data.user));
+        setTimeout(function() {
+          var redir = _safeRedir(new URLSearchParams(window.location.search).get('redirect'));
+          window.location.href = redir || '/account.html';
+        }, 400);
+      } else {
+        alertEl.innerHTML = '<div class="alert alert-error">' + (data.error || 'Invalid email or password.') + '</div>';
+      }
+    },
+    function(msg) {
+      alertEl.innerHTML = '<div class="alert alert-error">' + msg + '</div>';
+    }
+  );
+}
+
+function doRegister() {
+  var name = document.getElementById('regName').value.trim();
+  var email = document.getElementById('regEmail').value.trim();
+  var phone = document.getElementById('regPhone').value.trim();
+  var pass = document.getElementById('regPass').value;
+  var alertEl = document.getElementById('registerAlert');
+
+  if (!name || !email || !pass) { alertEl.innerHTML = '<div class="alert alert-error">Please fill in all required fields.</div>'; return; }
+  if (pass.length < 6) { alertEl.innerHTML = '<div class="alert alert-error">Password must be at least 6 characters.</div>'; return; }
+
+  var url = window.DH_API_URL || (function(){try{return localStorage.getItem('detoxy_sheets_url')||'';}catch(e){return '';}})();
+  if (!url) {
+    var newUser = { id: 'U' + Date.now(), name: name, email: email, phone: phone };
+    localStorage.setItem('dh_user', JSON.stringify(newUser));
+    alertEl.innerHTML = '<div class="alert alert-success">Account created! Redirecting...</div>';
+    setTimeout(function() { var redir = _safeRedir(new URLSearchParams(window.location.search).get('redirect')); window.location.href = redir || '/account.html'; }, 1000);
+    return;
+  }
+
+  alertEl.innerHTML = '<div class="alert alert-info">Creating account...</div>';
+
+  function _gasPost(payload, onSuccess, onFail) {
+    fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload),
+      redirect: 'follow',
+      mode: 'cors'
+    })
+    .then(function(r) { return r.text(); })
+    .then(function(text) {
+      var clean = text.replace(/^\uFEFF/, '').trim();
+      var data;
+      try { data = JSON.parse(clean); } catch(e) {
+        onFail('Service temporarily unavailable. Please try again shortly.');
+        return;
+      }
+      onSuccess(data);
+    })
+    .catch(function(err) {
+      console.warn('[Detoxy] Register fetch error:', err);
+      onFail('Connection issue. Please check your internet and try again.');
+    });
+  }
+
+  _gasPost(
+    { action: 'register', name: name, email: email, phone: phone, password: pass },
+    function(data) {
+      if (data.success) {
+        alertEl.innerHTML = '<div class="alert alert-success">Account created! You can now sign in.</div>';
+        setTimeout(function() { switchTab('Login'); }, 1500);
+      } else {
+        alertEl.innerHTML = '<div class="alert alert-error">' + (data.error || 'Registration failed. Please try again.') + '</div>';
+      }
+    },
+    function(msg) {
+      alertEl.innerHTML = '<div class="alert alert-error">' + msg + '</div>';
+    }
+  );
+}
+</script>
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js',{scope:'/'})
+      .then(function(reg){
+        // Check for updates every 60s (catches new deployments)
+        // Smart SW update: check every 5min + on visibility change
+        setInterval(function(){ reg.update().catch(function(){}); }, 300000);
+        document.addEventListener('visibilitychange', function(){ if(document.visibilityState==='active') reg.update().catch(function(){}); });
+      }).catch(function(){});
+  });
+}
+</script>
+</body>
+</html>

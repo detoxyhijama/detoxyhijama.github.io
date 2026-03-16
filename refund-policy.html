@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; frame-src 'self' https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me;"/><meta http-equiv="X-Content-Type-Options" content="nosniff"/><meta name="referrer" content="strict-origin-when-cross-origin"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Refund Policy | Detoxy Hijama</title>
+  <meta name="description" content="Refund Policy for Detoxy Hijama — India's trusted hijama equipment manufacturer."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="manifest" href="/manifest.json"/>
+  <link rel="stylesheet" href="/assets/style.css"/><link rel="icon" type="image/png" href="/assets/images/favicon.png"/>
+</head>
+<body>
+<script src="/assets/js/monitor.js"></script>
+
+
+<div id="header-mount"></div>
+<main>
+  <div class="policy-wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">Home</a>
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      <span aria-current="page">Refund Policy</span>
+    </nav>
+    <h1>Refund Policy</h1>
+    <div class="policy-date">Last updated: March 2026 &nbsp;|&nbsp; Detoxy Hijama, Pollachi, Tamil Nadu</div>
+    <div id="policyContent">
+<div class="policy-highlight">✅ We offer a <strong>7-day hassle-free return</strong> policy on all non-consumable products.</div>
+<h2>Eligibility for Returns</h2>
+<p>Returns are accepted within 7 days of delivery for products that are: unused and in original packaging, defective or damaged on arrival, or significantly not as described on our website.</p>
+<h2>Non-Returnable Items</h2>
+<p>The following items cannot be returned due to hygiene reasons:</p>
+<ul>
+<li>Opened consumables: surgical blades, latex gloves, surgical cotton</li>
+<li>Products with signs of use or without original packaging after 7 days</li>
+<li>Items damaged due to misuse, improper storage, or customer negligence</li>
+</ul>
+<h2>How to Initiate a Return</h2>
+<ol>
+<li>Email us at <a href="mailto:detoxyhijama@gmail.com">detoxyhijama@gmail.com</a> or call +91 95665 96077</li>
+<li>Include your Order ID and clear photos of the product and packaging</li>
+<li>Our team will approve the return within 24 hours and arrange pickup if applicable</li>
+<li>For defective items, return shipping is fully reimbursed</li>
+</ol>
+<h2>Refund Processing</h2>
+<ul>
+<li>Refunds are processed within 5–7 business days after we receive and inspect the return</li>
+<li>UPI refunds appear instantly once initiated</li>
+<li>Bank transfer (NEFT) takes 2–3 business days</li>
+<li>COD orders are refunded via UPI or bank transfer</li>
+</ul>
+<h2>Exchanges</h2>
+<p>We accept product exchanges within 7 days. If exchanging for a higher-priced product, you pay the difference. Contact us to arrange.</p></div>
+  </div>
+</main>
+<div id="footer-mount"></div>
+<script src="/assets/js/shared.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {{
+  document.getElementById('header-mount').innerHTML = renderHeader('');
+  document.getElementById('footer-mount').innerHTML = renderFooter();
+  initSearch(); initMobileNav(); Cart.updateUI(); Wishlist.updateUI(); updateNavAuthLink(); initScrollTop();
+}});
+</script>
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js',{scope:'/'})
+      .then(function(reg){
+        // Check for updates every 60s (catches new deployments)
+        // Smart SW update: check every 5min + on visibility change
+        setInterval(function(){ reg.update().catch(function(){}); }, 300000);
+        document.addEventListener('visibilitychange', function(){ if(document.visibilityState==='active') reg.update().catch(function(){}); });
+      }).catch(function(){});
+  });
+}
+</script>
+</body>
+</html>

@@ -230,7 +230,7 @@ function applyCoupon(code, cartTotal) {
 // ── Google Apps Script API URL ───────────────────────────────
 // Connected to: Detoxy Hijama Google Sheets backend
 // To change: replace the URL below and redeploy
-var HARDCODED_URL = 'https://script.google.com/macros/s/AKfycbxWpABioAc3SEa_nLY5LXWb9QlTBT9u_GiznMXIb_jdlukEmNpcOwNvvNreL6HuaQAUxA/exec';
+var HARDCODED_URL = 'https://script.google.com/macros/s/AKfycbyG6yxM1LspJr2nVQ6ivKAGLQ5SvlJ6jlb-0kZcrQAnODiOHZJv8x9BiKzr2qRoeJisUw/exec';
 
 (function () {
   // Priority: hardcoded URL → window global → localStorage (admin's browser only)
@@ -250,7 +250,7 @@ var HARDCODED_URL = 'https://script.google.com/macros/s/AKfycbxWpABioAc3SEa_nLY5
         '1. Deploy Google Apps Script\n' +
         '2. Admin Panel → Settings → paste URL → Save\n' +
         '3. Copy the line shown and add to assets/js/shared.js\n' +
-        '   var HARDCODED_URL = \'https://script.google.com/macros/s/YOUR_ID/exec\';'
+        '   var HARDCODED_URL = \'https://script.google.com/macros/s/AKfycbyG6yxM1LspJr2nVQ6ivKAGLQ5SvlJ6jlb-0kZcrQAnODiOHZJv8x9BiKzr2qRoeJisUw/exec';'
       );
     }
     return;
@@ -371,7 +371,7 @@ var HARDCODED_URL = 'https://script.google.com/macros/s/AKfycbxWpABioAc3SEa_nLY5
       DHMonitor.fetch.request(apiUrl + '?action=getProducts', { timeout: 15000 }, 2)
         .then(function(d) {
           if (!d.products || !d.products.length) {
-            if (typeof console !== 'undefined') console.warn('[Detoxy] DB returned 0 products. Run SETUP_EVERYTHING() in Google Apps Script.');
+            if (typeof console !== 'undefined') console.warn('[Detoxy] DB returned 0 products. Run SETUP_EVERYTHING() in  Apps Script.');
             document.dispatchEvent(new CustomEvent('productsUpdated')); // still render hardcoded
             return;
           }

@@ -1594,7 +1594,7 @@ input[type="reset"] {
 
 /* ── Animate on Scroll ───────────────────────── */
 @media(prefers-reduced-motion:no-preference){
-  .animate-in{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+  .animate-in{opacity:1;transform:translateY(0);transition:opacity .55s ease,transform .55s ease}
   .animate-in.visible{opacity:1;transform:none}
   .animate-in[data-delay="1"]{transition-delay:.1s}
   .animate-in[data-delay="2"]{transition-delay:.2s}
@@ -1727,10 +1727,16 @@ input[type="reset"] {
   opacity: 0;
   transform: translateY(18px);
   transition: opacity .45s cubic-bezier(.4,0,.2,1), transform .45s cubic-bezier(.4,0,.2,1);
+  /* Fallback: show immediately if JS fails to add .visible */
+  animation: animateInFallback 0.5s 1.5s forwards;
 }
 .animate-in.visible {
   opacity: 1;
   transform: none;
+  animation: none;
+}
+@keyframes animateInFallback {
+  to { opacity: 1; transform: none; }
 }
 /* Stagger delay for grid children */
 .animate-in:nth-child(2) { transition-delay: .06s; }

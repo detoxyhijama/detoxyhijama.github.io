@@ -331,21 +331,70 @@ function loadOrders() {
     renderOrders([]);
     return;
   }
-  // Fetch orders filtered by customer phone
-  fetch(_API + '?action=getOrders', { redirect: 'follow' })
-    .then(function(r){ return r.json(); })
-    .then(function(d) {
-      var all = d.orders || [];
-      // Filter to this user's orders by email or phone
-      _orders = all.filter(function(o) {
-        var emailMatch = _user.email && String(o.email||'').toLowerCase() === _user.email.toLowerCase();
-        var phoneMatch = _user.phone && String(o.phone||'').replace(/\D/g,'').slice(-10) === String(_user.phone||'').replace(/\D/g,'').slice(-10);
-        return emailMatch || phoneMatch;
-      });
+  // Use getUserOrders — public endpoint, returns only this customer's orders
+  var url = _API + '?action=getUserOrders'
+    + '&email=' + encodeURIComponent(_user.email || '')
+    + '&phone=' + encodeURIComponent(_user.phone || '');
+
+  fetch(url, { redirect: 'follow', mode: 'cors' })
+    .then(function(r){ return r.text(); })
+    .then(function(text){
+      var clean = text.replace(/^﻿/, '').trim();
+      var d; try { d = JSON.parse(clean); } catch(e) { d = {}; }
+      _orders = d.orders || [];
+      // Also check localStorage for orders placed in this browser session
+      try {
+        var localOrder = JSON.parse(localStorage.getItem('dh_last_order') || 'null');
+        if (localOrder && localOrder.orderId) {
+          var alreadyIn = _orders.some(function(o){
+            return String(o.order_id) === String(localOrder.orderId);
+          });
+          if (!alreadyIn) {
+            // Add local order as pending so customer sees it immediately
+            _orders.unshift({
+              order_id: localOrder.orderId,
+              name: localOrder.name || '',
+              phone: localOrder.phone || '',
+              email: localOrder.email || '',
+              items: JSON.stringify(localOrder.items || []),
+              subtotal: localOrder.subtotal || 0,
+              shipping: 0,
+              total: localOrder.total || 0,
+              payment: localOrder.payment || 'cod',
+              status: 'pending',
+              shipping_status: 'pending',
+              date: localOrder.date || new Date().toISOString(),
+              address: localOrder.address || '',
+              city: localOrder.city || '',
+              state: localOrder.state || '',
+              pincode: localOrder.pincode || ''
+            });
+          }
+        }
+      } catch(e) {}
       renderOrders(_orders);
       updateStats(_orders);
     })
-    .catch(function(){ renderOrders([]); });
+    .catch(function(e) {
+      console.warn('[Detoxy] loadOrders failed:', e.message);
+      // Fallback: show local order from localStorage if available
+      var fallback = [];
+      try {
+        var localOrder = JSON.parse(localStorage.getItem('dh_last_order') || 'null');
+        if (localOrder && localOrder.orderId) {
+          fallback = [{
+            order_id: localOrder.orderId,
+            name: localOrder.name || '',
+            total: localOrder.total || 0,
+            payment: localOrder.payment || 'cod',
+            status: 'pending',
+            date: localOrder.date || new Date().toISOString(),
+            items: JSON.stringify(localOrder.items || [])
+          }];
+        }
+      } catch(ex) {}
+      renderOrders(fallback);
+    });
 }
 
 function updateStats(orders) {

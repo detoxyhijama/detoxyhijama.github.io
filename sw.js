@@ -8,7 +8,7 @@
 // IMPORTANT: Increment CACHE_VERSION on every deployment to bust stale caches
 // Auto-stamp: this should be replaced by CI/CD with a content hash e.g. 'dh-v1.3-abc123'
 // For manual updates, simply increment the version number below
-var CACHE_VERSION = 'dh-v1.4';
+var CACHE_VERSION = 'dh-v2.0';
 var STATIC_CACHE  = CACHE_VERSION + '-static';
 var IMAGE_CACHE   = CACHE_VERSION + '-images';
 var PAGE_CACHE    = CACHE_VERSION + '-pages';
@@ -59,11 +59,25 @@ self.addEventListener('activate', function(e) {
   e.waitUntil(
     caches.keys().then(function(keys) {
       return Promise.all(
+        // Delete ALL old caches — any dh- cache that isn't this version
         keys.filter(function(k) {
           return k.startsWith('dh-') && k !== STATIC_CACHE && k !== IMAGE_CACHE && k !== PAGE_CACHE;
-        }).map(function(k) { return caches.delete(k); })
+        }).map(function(k) {
+          console.log('[SW] Deleting old cache:', k);
+          return caches.delete(k);
+        })
       );
-    }).then(function() { return self.clients.claim(); })
+    }).then(function() {
+      // Immediately take control of all open pages
+      return self.clients.claim();
+    }).then(function() {
+      // Notify all clients to reload for fresh content
+      return self.clients.matchAll({ type: 'window' }).then(function(clients) {
+        clients.forEach(function(client) {
+          client.postMessage({ type: 'SW_ACTIVATED', version: CACHE_VERSION });
+        });
+      });
+    })
   );
 });
 

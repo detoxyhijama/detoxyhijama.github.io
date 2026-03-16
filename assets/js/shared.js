@@ -1632,15 +1632,20 @@ function initLazyImages(){
 // ── SW update notification ────────────────────────────────────
 (function(){
   if(!('serviceWorker' in navigator)) return;
+  // Listen for SW activation (cache cleared) and reload to get fresh content
+  navigator.serviceWorker.addEventListener('message', function(e) {
+    if (e.data && e.data.type === 'SW_ACTIVATED') {
+      console.log('[SW] New version activated:', e.data.version, '— reloading for fresh content');
+      window.location.reload();
+    }
+  });
   navigator.serviceWorker.ready.then(function(reg){
     reg.addEventListener('updatefound', function(){
       var worker = reg.installing;
       if(!worker) return;
       worker.addEventListener('statechange', function(){
         if(worker.state==='installed' && navigator.serviceWorker.controller){
-          // New version ready — show unobtrusive refresh toast
           showToast('🔄 Site updated — tap to refresh', 'default', 10000);
-          // Clicking the toast refreshes
           var c = document.getElementById('toast-container');
           if(c) c.addEventListener('click', function(){ worker.postMessage({type:'SKIP_WAITING'}); window.location.reload(); }, {once:true});
         }

@@ -156,7 +156,7 @@
     <!-- GALLERY -->
     <div class="pd-gallery">
       <div class="pd-main-img">
-        <img decoding="async" id="mainImg" src="/assets/images/products/indian-standard-cup/main.jpg" alt="Detoxy Hijama Indian Standard Hijama Cups" loading="eager" onerror="this.src='/assets/images/placeholder.svg'"/>
+        <img decoding="async" id="mainImg" src="/assets/images/products/indian-standard-cup/main.jpg" alt="Detoxy Hijama Indian Standard Hijama Cups" loading="eager" onerror="this.src=\'/assets/images/placeholder.svg\'"/>
       </div>
       <div class="pd-thumbs" id="thumbs"></div>
     </div>
@@ -491,7 +491,7 @@ document.addEventListener('productsUpdated', function() {
 <script>
 if('serviceWorker' in navigator){
   window.addEventListener('load',function(){
-    navigator.serviceWorker.register('/sw.js',{scope:'/'})
+    navigator.serviceWorker.register('/sw.js',{scope:'/',updateViaCache:'none'})
       .then(function(reg){
         // Check for updates every 60s (catches new deployments)
         // Smart SW update: check every 5min + on visibility change

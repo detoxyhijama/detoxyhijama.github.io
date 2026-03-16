@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('orderedItems').innerHTML = (order.items || []).map(function(item) {
     var p = PRODUCTS.find(function(x){ return x.id === item.id; });
     var img = p && p.images && p.images[0] ? '/'+p.images[0] : '/assets/images/placeholder.svg';
-    return '<div class="oi"><img loading="lazy" decoding="async" src="' + img + '" alt="' + item.name + '" class="oi-img" onerror="this.src='/assets/images/placeholder.svg'">' +
+    return '<div class="oi"><img loading="lazy" decoding="async" src="' + img + '" alt="' + item.name + '" class="oi-img" onerror="this.src=\'/assets/images/placeholder.svg\'">' +
       '<div class="oi-name">' + item.name + ' <span style="color:var(--muted);font-weight:400">x' + item.qty + '</span>' +
       (item.size ? ' <span style="background:var(--tp);color:var(--td);font-size:.7rem;padding:2px 7px;border-radius:50px;font-weight:600">' + item.size + '</span>' : '') +
       '</div><div class="oi-price">' + fmtINR(item.price * item.qty) + '</div></div>';
@@ -370,7 +370,7 @@ function liveTrackOrder() {
 <script>
 if('serviceWorker' in navigator){
   window.addEventListener('load',function(){
-    navigator.serviceWorker.register('/sw.js',{scope:'/'})
+    navigator.serviceWorker.register('/sw.js',{scope:'/',updateViaCache:'none'})
       .then(function(reg){
         // Check for updates every 60s (catches new deployments)
         // Smart SW update: check every 5min + on visibility change

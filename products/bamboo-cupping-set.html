@@ -274,7 +274,7 @@ function _initProductPage() {
 
   // Build gallery thumbs
   var thumbsHtml = p.images.map(function(img, i) {
-    var _s=img.startsWith('/')||img.startsWith('http')?img:'/'+img; return '<div class="pd-thumb'+(i===0?' active':'')+'" onclick="switchImg(this,''+_s+'')"><img src="'+_s+'" alt="'+p.name+' view '+(i+1)+'" loading="lazy" decoding="async"></div>';
+    var _s=img.startsWith('/')||img.startsWith('http')?img:'/'+img; return '<div class="pd-thumb'+(i===0?' active':'')+'" onclick="switchImg(this,\''+_s+'\')"><img src="'+_s+'" alt="'+p.name+' view '+(i+1)+'" loading="lazy" decoding="async"></div>';
   }).join('');
 
   // Features list
@@ -402,7 +402,7 @@ document.addEventListener('productsUpdated', function() {
 <script>
 if('serviceWorker' in navigator){
   window.addEventListener('load',function(){
-    navigator.serviceWorker.register('/sw.js',{scope:'/'})
+    navigator.serviceWorker.register('/sw.js',{scope:'/',updateViaCache:'none'})
       .then(function(reg){
         // Check for updates every 60s (catches new deployments)
         // Smart SW update: check every 5min + on visibility change

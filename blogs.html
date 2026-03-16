@@ -201,13 +201,15 @@
         renderBlogGrid('all');
       }
 
+      // Render built-in blogs immediately — don't wait for API
+      mergeAndRender([]);
+
       var apiUrl = '';
       try { apiUrl = window.DH_API_URL || (function(){try{return localStorage.getItem('detoxy_sheets_url')||'';}catch(e){return '';}})() || ''; } catch(e){}
 
       if (apiUrl) {
-        // Try Sheets API first
-        // Safety net: always render built-in blogs after 3s even if API hangs
-        var _blogRendered = false;
+        // Then try API to merge in any admin-created blogs on top
+        var _blogRendered = true; // already rendered above
         setTimeout(function() {
           if (!_blogRendered) { _blogRendered = true; mergeAndRender([]); }
         }, 3000);
@@ -1089,7 +1091,7 @@
 <script>
 if('serviceWorker' in navigator){
   window.addEventListener('load',function(){
-    navigator.serviceWorker.register('/sw.js',{scope:'/'})
+    navigator.serviceWorker.register('/sw.js',{scope:'/',updateViaCache:'none'})
       .then(function(reg){
         // Check for updates every 60s (catches new deployments)
         // Smart SW update: check every 5min + on visibility change

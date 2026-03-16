@@ -712,7 +712,7 @@
           <div class="form-group">
             <label class="form-label" for="settingsUrl">Apps Script Web App URL</label>
             <div style="display:flex;gap:8px">
-              <input type="url" id="settingsUrl" class="form-control" placeholder="https://script.google.com/macros/s/AKfy.../exec" value="https://script.google.com/macros/s/AKfycbxWpABioAc3SEa_nLY5LXWb9QlTBT9u_GiznMXIb_jdlukEmNpcOwNvvNreL6HuaQAUxA/exec"/>
+              <input type="url" id="settingsUrl" class="form-control" placeholder="https://script.google.com/macros/s/AKfy.../exec" value="https://script.google.com/macros/s/AKfycbyG6yxM1LspJr2nVQ6ivKAGLQ5SvlJ6jlb-0kZcrQAnODiOHZJv8x9BiKzr2qRoeJisUw/exec"/>
               <button class="btn btn-primary" onclick="saveSheetsUrl()">Save</button>
             </div>
             <small style="color:var(--muted);font-size:.73rem">URL must end with <code>/exec</code></small>
@@ -1054,11 +1054,11 @@ if (_legacyPass && !localStorage.getItem('dh_admin_pass_hash')) {
 }
   function esc(s){if(s==null)return '';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 
-var API_URL    = localStorage.getItem('detoxy_sheets_url') || 'https://script.google.com/macros/s/AKfycbxWpABioAc3SEa_nLY5LXWb9QlTBT9u_GiznMXIb_jdlukEmNpcOwNvvNreL6HuaQAUxA/exec';
+var API_URL    = localStorage.getItem('detoxy_sheets_url') || 'https://script.google.com/macros/s/AKfycbyG6yxM1LspJr2nVQ6ivKAGLQ5SvlJ6jlb-0kZcrQAnODiOHZJv8x9BiKzr2qRoeJisUw/exec';
 // Auto-seed API URL so admin panel works without manual setup
 (function() {
   if (!localStorage.getItem('detoxy_sheets_url')) {
-    localStorage.setItem('detoxy_sheets_url', 'https://script.google.com/macros/s/AKfycbxWpABioAc3SEa_nLY5LXWb9QlTBT9u_GiznMXIb_jdlukEmNpcOwNvvNreL6HuaQAUxA/exec');
+    localStorage.setItem('detoxy_sheets_url', 'https://script.google.com/macros/s/AKfycbyG6yxM1LspJr2nVQ6ivKAGLQ5SvlJ6jlb-0kZcrQAnODiOHZJv8x9BiKzr2qRoeJisUw/exec');
   }
   API_URL = localStorage.getItem('detoxy_sheets_url');
 })();

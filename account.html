@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="dns-prefetch" href="https://script.google.com"/>
+  <link rel="preconnect" href="https://script.google.com"/>
+  <link rel="dns-prefetch" href="https://script.googleusercontent.com"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; frame-src 'self' https://www.google.com https://maps.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me;"/>
+    <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN"/>
+  <meta name="referrer" content="strict-origin-when-cross-origin"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#1a3938"/>
+  <title>My Account | Detoxy Hijama</title>
+  <meta name="robots" content="noindex,nofollow"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700&family=Outfit:wght@300;400;500;600;700&display=swap"/>
+  <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700&family=Outfit:wght@300;400;500;600;700&display=swap"/>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700&family=Outfit:wght@300;400;500;600;700&display=swap"/></noscript>
+  <link rel="manifest" href="/manifest.json"/>
+  <link rel="stylesheet" href="/assets/style.css"/>
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png"/>
+  <link rel="apple-touch-icon" href="/assets/images/logo-192.png"/>
+  <style>
+    body{background:var(--cream)}
+    .acc-wrap{max-width:1100px;margin:0 auto;padding:32px 20px 80px;display:grid;grid-template-columns:260px 1fr;gap:28px;align-items:start}
+    /* ── Sidebar ── */
+    .acc-sidebar{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;position:sticky;top:calc(var(--nav-h,64px) + 16px)}
+    .acc-profile-block{padding:24px;text-align:center;background:linear-gradient(135deg,var(--dark),var(--td));color:#fff}
+    .acc-avatar{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:1.5rem;font-weight:700;border:2px solid rgba(255,255,255,.3)}
+    .acc-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700}
+    .acc-email{font-size:.75rem;opacity:.7;margin-top:3px}
+    .acc-nav{padding:8px}
+    .acc-nav-link{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;font-size:.84rem;font-weight:500;color:var(--text);cursor:pointer;transition:var(--transition);border:none;background:none;width:100%;text-align:left}
+    .acc-nav-link:hover,.acc-nav-link.active{background:var(--tp);color:var(--td)}
+    .acc-nav-link svg{width:17px;height:17px;flex-shrink:0}
+    .acc-nav-link .badge-dot{margin-left:auto;width:8px;height:8px;border-radius:50%;background:var(--t)}
+    .acc-nav-sep{height:1px;background:var(--border);margin:6px 0}
+    .acc-logout{color:var(--danger)!important}
+    .acc-logout:hover{background:#fee2e2!important;color:var(--danger)!important}
+    /* ── Main panel ── */
+    .acc-panel{background:var(--white);border:1px solid var(--border);border-radius:var(--radius)}
+    .acc-panel-head{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+    .acc-panel-head h2{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:700;color:var(--dark)}
+    .acc-panel-body{padding:24px}
+    /* ── Stats row ── */
+    .acc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}
+    .acc-stat{background:var(--cream);border-radius:10px;padding:16px;text-align:center}
+    .acc-stat-val{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--dark)}
+    .acc-stat-label{font-size:.72rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-top:3px}
+    /* ── Orders table ── */
+    .orders-table{width:100%;border-collapse:collapse;font-size:.83rem}
+    .orders-table th{padding:9px 14px;text-align:left;font-size:.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;border-bottom:2px solid var(--border);background:var(--cream)}
+    .orders-table td{padding:12px 14px;border-bottom:1px solid var(--border);vertical-align:middle}
+    .orders-table tr:last-child td{border-bottom:none}
+    .orders-table tr:hover td{background:var(--cream)}
+    /* ── Status badges ── */
+    .status-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:50px;font-size:.68rem;font-weight:700}
+    .status-pending{background:#fef3c7;color:#92400e}
+    .status-confirmed{background:#d1fae5;color:#065f46}
+    .status-dispatched{background:#dbeafe;color:#1e40af}
+    .status-delivered{background:#e0e7ff;color:#3730a3}
+    .status-cancelled{background:#fee2e2;color:#991b1b}
+    /* ── Track steps ── */
+    .track-steps{display:flex;align-items:flex-start;position:relative;margin:20px 0}
+    .track-steps::before{content:'';position:absolute;top:16px;left:16px;right:16px;height:2px;background:var(--border)}
+    .track-step{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;position:relative;z-index:1}
+    .track-dot{width:32px;height:32px;border-radius:50%;border:2px solid var(--border);background:var(--white);display:flex;align-items:center;justify-content:center}
+    .track-dot svg{width:14px;height:14px;color:var(--muted)}
+    .track-step.done .track-dot{background:var(--t);border-color:var(--t)}
+    .track-step.done .track-dot svg{color:#fff}
+    .track-step.active .track-dot{border-color:var(--t);box-shadow:0 0 0 4px var(--tp)}
+    .track-step.active .track-dot svg{color:var(--t)}
+    .track-label{font-size:.68rem;font-weight:600;color:var(--muted);text-align:center}
+    .track-step.done .track-label,.track-step.active .track-label{color:var(--dark)}
+    /* ── Forms ── */
+    .form-row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .section-hidden{display:none}
+    /* ── Empty state ── */
+    .empty-state-acc{padding:48px;text-align:center;color:var(--muted)}
+    .empty-state-acc svg{width:48px;height:48px;opacity:.25;margin-bottom:12px}
+    /* ── Alert ── */
+    .acc-alert{padding:11px 14px;border-radius:8px;font-size:.83rem;margin-bottom:14px}
+    .acc-alert-success{background:#d1fae5;color:#065f46}
+    .acc-alert-error{background:#fee2e2;color:#991b1b}
+    /* ── Tracking detail card ── */
+    .order-detail-card{background:var(--cream);border-radius:10px;padding:16px;margin-bottom:14px}
+    .order-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .od-item label,.od-label{font-size:.67rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);display:block;margin-bottom:2px}
+    .od-item span{font-size:.84rem;color:var(--dark);font-weight:500;word-break:break-word;overflow-wrap:anywhere}
+    @media(max-width:860px){.acc-wrap{grid-template-columns:1fr}.acc-sidebar{position:static}.acc-stats{grid-template-columns:1fr 1fr}.form-row2{grid-template-columns:1fr}}
+    @media(max-width:480px){.acc-stats{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<script src="/assets/js/monitor.js" defer></script>
+
+
+<div id="header-mount"></div>
+
+<main class="acc-wrap" id="accWrap" style="display:none">
+
+  <!-- SIDEBAR -->
+  <aside class="acc-sidebar">
+    <div class="acc-profile-block">
+      <div class="acc-avatar" id="accAvatar">?</div>
+      <div class="acc-name" id="accName">Loading…</div>
+      <div class="acc-email" id="accEmailDisplay"></div>
+    </div>
+    <nav class="acc-nav">
+      <button class="acc-nav-link active" onclick="showTab('overview',this)">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        Overview
+      </button>
+      <button class="acc-nav-link" onclick="showTab('orders',this)">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        My Orders
+        <span class="badge-dot" id="ordersBadge" style="display:none"></span>
+      </button>
+      <button class="acc-nav-link" onclick="showTab('tracking',this)">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        Track Order
+      </button>
+      <div class="acc-nav-sep"></div>
+      <button class="acc-nav-link" onclick="showTab('addresses',this)">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        Address Book
+      </button>
+      <button class="acc-nav-link" onclick="showTab('reviews',this)">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+        My Reviews
+      </button>
+      <button class="acc-nav-link" onclick="showTab('returns',this)">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 15v-1a4 4 0 00-4-4H8m0 0l3 3m-3-3l3-3m9 14V5a2 2 0 00-2-2H6a2 2 0 00-2 2v16l4-2 4 2 4-2 4 2z"/></svg>
+        Returns &amp; Refunds
+      </button>
+      <div class="acc-nav-sep"></div>
+      <button class="acc-nav-link" onclick="showTab('profile',this)">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+        Edit Profile
+      </button>
+      <button class="acc-nav-link" onclick="showTab('password',this)">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+        Change Password
+      </button>
+      <div class="acc-nav-sep"></div>
+      <button class="acc-nav-link acc-logout" onclick="doLogout()">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+        Sign Out
+      </button>
+    </nav>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <div>
+
+    <!-- OVERVIEW -->
+    <div id="tab-overview" class="acc-panel">
+      <div class="acc-panel-head"><h2>Account Overview</h2><span id="accJoinDate" style="font-size:.78rem;color:var(--muted)"></span></div>
+      <div class="acc-panel-body">
+        <div class="acc-stats">
+          <div class="acc-stat"><div class="acc-stat-val" id="totalOrdersCount">—</div><div class="acc-stat-label">Total Orders</div></div>
+          <div class="acc-stat"><div class="acc-stat-val" id="pendingOrdersCount">—</div><div class="acc-stat-label">In Progress</div></div>
+          <div class="acc-stat"><div class="acc-stat-val" id="totalSpentAmount">—</div><div class="acc-stat-label">Total Spent</div></div>
+        </div>
+        <h3 style="font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:14px">Recent Orders</h3>
+        <div id="recentOrdersList"></div>
+        <div style="margin-top:20px">
+          <h3 style="font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:14px">Quick Links</h3>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a href="/products.html" class="btn btn-outline btn-sm">Browse Products</a>
+            <button class="btn btn-outline btn-sm" onclick="showTab('tracking',document.querySelector('.acc-nav-link[onclick*=\"tracking\"]'))">Track Order</button>
+            <a href="/quote.html" class="btn btn-outline btn-sm">Bulk Quote</a>
+            <a href="/contact.html" class="btn btn-outline btn-sm">Contact Support</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ORDERS -->
+    <div id="tab-orders" class="acc-panel section-hidden">
+      <div class="acc-panel-head"><h2>My Orders</h2><button class="btn btn-outline btn-sm" onclick="loadOrders()">Refresh</button></div>
+      <div class="acc-panel-body" style="padding:0">
+        <div id="ordersContent" style="padding:24px;color:var(--muted);font-size:.85rem">Loading orders…</div>
+      </div>
+    </div>
+
+    <!-- TRACKING -->
+    <div id="tab-tracking" class="acc-panel section-hidden">
+      <div class="acc-panel-head"><h2>Track Your Order</h2></div>
+      <div class="acc-panel-body">
+        <p style="font-size:.84rem;color:var(--muted);margin-bottom:18px">Enter your Order ID and the phone number used at checkout to get live tracking.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
+          <input type="text" id="trackOrderId" class="form-control" placeholder="Order ID (e.g. DH12345678)" style="flex:1;min-width:180px"/>
+          <input type="tel" id="trackPhone" class="form-control" placeholder="Phone number" style="flex:1;min-width:150px"/>
+          <button class="btn btn-primary" onclick="trackOrder()">Track</button>
+        </div>
+        <div id="trackResult"></div>
+      </div>
+    </div>
+
+    <!-- EDIT PROFILE -->
+    <div id="tab-profile" class="acc-panel section-hidden">
+      <div class="acc-panel-head"><h2>Edit Profile</h2></div>
+      <div class="acc-panel-body">
+        <div id="profileAlert"></div>
+        <div class="form-row2">
+          <div class="form-group"><label class="form-label" for="profName">Full Name</label><input type="text" id="profName" class="form-control" autocomplete="name"/></div>
+          <div class="form-group"><label class="form-label" for="profPhone">Mobile Number</label><input type="tel" id="profPhone" class="form-control" autocomplete="tel"/></div>
+        </div>
+        <div class="form-group"><label class="form-label" for="profEmail">Email Address</label><input type="email" id="profEmail" class="form-control" autocomplete="email" readonly style="background:var(--cream);cursor:not-allowed"/><small style="font-size:.72rem;color:var(--muted)">Email cannot be changed</small></div>
+        <div class="form-group"><label class="form-label" for="profAddress">Delivery Address</label><input type="text" id="profAddress" class="form-control" placeholder="House no., street, area" autocomplete="street-address"/></div>
+        <div class="form-row2">
+          <div class="form-group"><label class="form-label" for="profCity">City</label><input type="text" id="profCity" class="form-control" autocomplete="address-level2"/></div>
+          <div class="form-group"><label class="form-label" for="profState">State</label>
+            <select id="profState" class="form-control">
+              <option value="">Select state</option>
+              <option>Tamil Nadu</option><option>Maharashtra</option><option>Karnataka</option><option>Kerala</option><option>Telangana</option><option>Andhra Pradesh</option><option>Gujarat</option><option>Rajasthan</option><option>Uttar Pradesh</option><option>West Bengal</option><option>Delhi</option><option>Punjab</option><option>Haryana</option><option>Madhya Pradesh</option><option>Bihar</option><option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group"><label class="form-label" for="profPin">PIN Code</label><input type="text" id="profPin" class="form-control" maxlength="6" autocomplete="postal-code"/></div>
+        <button class="btn btn-primary" onclick="saveProfile()">Save Changes</button>
+      </div>
+    </div>
+
+    <!-- CHANGE PASSWORD -->
+    <div id="tab-password" class="acc-panel section-hidden">
+      <div class="acc-panel-head"><h2>Change Password</h2></div>
+      <div class="acc-panel-body">
+        <div id="passAlert"></div>
+        <div class="form-group" style="max-width:420px">
+          <label class="form-label" for="passOld">Current Password</label>
+          <input type="password" id="passOld" class="form-control" autocomplete="current-password"/>
+        </div>
+        <div class="form-group" style="max-width:420px">
+          <label class="form-label" for="passNew">New Password</label>
+          <input type="password" id="passNew" class="form-control" autocomplete="new-password"/>
+          <small style="font-size:.72rem;color:var(--muted)">Minimum 8 characters</small>
+        </div>
+        <div class="form-group" style="max-width:420px">
+          <label class="form-label" for="passConfirm">Confirm New Password</label>
+          <input type="password" id="passConfirm" class="form-control" autocomplete="new-password"/>
+        </div>
+        <button class="btn btn-primary" onclick="changePassword()">Update Password</button>
+      </div>
+    </div>
+
+    <!-- ADDRESS BOOK -->
+    <div id="tab-addresses" class="acc-panel section-hidden">
+      <div class="acc-panel-head">
+        <h2>Address Book</h2>
+        <button class="btn btn-primary btn-sm" onclick="openAddressModal()">+ Add Address</button>
+      </div>
+      <div class="acc-panel-body">
+        <div id="addressList"><p style="color:var(--muted);font-size:.88rem">No saved addresses yet. Add one to speed up checkout.</p></div>
+      </div>
+    </div>
+
+    <!-- REVIEWS -->
+    <div id="tab-reviews" class="acc-panel section-hidden">
+      <div class="acc-panel-head"><h2>My Reviews</h2></div>
+      <div class="acc-panel-body">
+        <p style="color:var(--muted);font-size:.85rem;margin-bottom:20px">Submit a review for a product you have ordered.</p>
+        <div class="form-group">
+          <label class="form-label" for="revProduct">Product</label>
+          <select id="revProduct" class="form-control"><option value="">Select a product...</option></select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Rating</label>
+          <div id="starPicker" style="display:flex;gap:6px;font-size:1.6rem;cursor:pointer">
+            <span data-val="1" onclick="setRating(1)" class="star-pick">&#9734;</span>
+            <span data-val="2" onclick="setRating(2)" class="star-pick">&#9734;</span>
+            <span data-val="3" onclick="setRating(3)" class="star-pick">&#9734;</span>
+            <span data-val="4" onclick="setRating(4)" class="star-pick">&#9734;</span>
+            <span data-val="5" onclick="setRating(5)" class="star-pick">&#9734;</span>
+          </div>
+          <input type="hidden" id="revRating" value="0"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="revTitle">Review Title</label>
+          <input type="text" id="revTitle" class="form-control" placeholder="Summarise your experience" maxlength="100"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="revBody">Review</label>
+          <textarea id="revBody" class="form-control" rows="4" placeholder="Share details about your experience..." maxlength="1000"></textarea>
+          <small style="font-size:.72rem;color:var(--muted)"><span id="revCharCount">0</span>/1000</small>
+        </div>
+        <div id="revAlert" style="display:none"></div>
+        <button class="btn btn-primary" onclick="submitReview()">Submit Review</button>
+        <div id="myReviewsList" style="margin-top:28px"></div>
+      </div>
+    </div>
+
+    <!-- RETURNS AND REFUNDS -->
+    <div id="tab-returns" class="acc-panel section-hidden">
+      <div class="acc-panel-head"><h2>Returns &amp; Refunds</h2></div>
+      <div class="acc-panel-body">
+        <div style="background:#fef3c7;border:1px solid #fde68a;border-radius:10px;padding:14px 18px;font-size:.83rem;color:#92400e;margin-bottom:22px">
+          <strong>Return Policy:</strong> Returns accepted within 7 days of delivery for unused, unopened items. Consumables are non-returnable for hygiene reasons.
+          <a href="/refund-policy.html" style="color:#b45309;font-weight:700;margin-left:6px">Full Policy</a>
+        </div>
+        <div class="form-group"><label class="form-label" for="retOrderId">Order ID</label><input type="text" id="retOrderId" class="form-control" placeholder="e.g. DH1A2B3C4D" maxlength="20"/></div>
+        <div class="form-group"><label class="form-label" for="retProduct">Product(s) to Return</label><input type="text" id="retProduct" class="form-control" placeholder="Product name and quantity"/></div>
+        <div class="form-group">
+          <label class="form-label" for="retReason">Reason for Return</label>
+          <select id="retReason" class="form-control">
+            <option value="">Select reason...</option>
+            <option>Wrong item received</option>
+            <option>Item damaged in transit</option>
+            <option>Product defective</option>
+            <option>Not as described</option>
+            <option>Changed my mind</option>
+            <option>Duplicate order</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label" for="retDetails">Additional Details</label><textarea id="retDetails" class="form-control" rows="3" placeholder="Describe the issue..." maxlength="500"></textarea></div>
+        <div class="form-group">
+          <label class="form-label" for="retRefundMethod">Preferred Refund Method</label>
+          <select id="retRefundMethod" class="form-control">
+            <option value="">Select...</option>
+            
+            <option>Bank Transfer (NEFT/IMPS)</option>
+            <option>Store Credit</option>
+          </select>
+        </div>
+        <div id="retAlert" style="display:none"></div>
+        <button class="btn btn-primary" onclick="submitReturnRequest()">Submit Return Request</button>
+        <div id="myReturnsList" style="margin-top:24px"></div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- Auth guard redirect overlay -->
+<div id="authGuard" style="position:fixed;inset:0;background:var(--cream);display:flex;align-items:center;justify-content:center;z-index:999">
+  <div style="text-align:center">
+    <div style="width:48px;height:48px;border:3px solid var(--border);border-top-color:var(--t);border-radius:50%;animation:spin .6s linear infinite;margin:0 auto 16px"></div>
+    <p style="color:var(--muted);font-size:.85rem">Loading your account…</p>
+  </div>
+</div>
+<style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+
+<div id="footer-mount"></div>
+<script charset="utf-8" src="/assets/js/shared.js" defer></script>
+<script>
+// ── Security: auth guard ───────────────────────────────────────────────────
+var _user = null;
+var _API  = '';
+
+function _getUser() {
+  try {
+    var raw = localStorage.getItem('dh_user');
+    if (!raw) return null;
+    var u = JSON.parse(raw);
+    // NEW session format: {user:{...}, loginTime:..., expiresAt:...}
+    if (u && u.expiresAt) {
+      if (Date.now() > u.expiresAt) {
+        localStorage.removeItem('dh_user');
+        return null;
+      }
+      return u.user || null; // Unwrap the session wrapper
+    }
+    // LEGACY session format: validate 7-day age
+    if (u && u.loginTime && (Date.now() - u.loginTime) > 7 * 24 * 3600 * 1000) {
+      localStorage.removeItem('dh_user');
+      return null;
+    }
+    // Legacy: plain user object — validate it has an id
+    return (u && (u.id || u.email)) ? u : null;
+  } catch(e) { return null; }
+}
+
+function _sanitize(str) {
+  return String(str || '').replace(/[<>&"']/g, function(c) {
+    return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":'&#39;'}[c];
+  });
+}
+
+function _dhInit() {
+  if (window._dhInitDone) return;
+  // Guard: ensure shared.js has fully loaded before attempting renders
+  // Guard: if shared.js hasn't loaded yet, retry — but cap at 10 attempts (~1s total)
+  if (typeof renderHeader !== 'function') {
+    var _retryCount = (window._dhInitRetries = (window._dhInitRetries || 0) + 1);
+    if (_retryCount <= 10) {
+      setTimeout(_dhInit, 100);
+    } else {
+      console.error('[Detoxy] shared.js failed to load after 10 retries. Check network.');
+    }
+    return;
+  }
+  window._dhInitRetries = 0; window._dhInitDone = true; // Reset on success
+  // Mount header/footer
+  var hm = document.getElementById('header-mount');
+  if (hm) {
+    var frag = document.createRange().createContextualFragment(renderHeader(''));
+    hm.replaceWith(frag);
+    Cart.updateUI(); if(typeof Wishlist!=="undefined") Wishlist.updateUI(); initSearch(); initMobileNav(); if(typeof initScrollTop==="function") initScrollTop(); updateNavAuthLink();
+  _populateProductSelect(); renderAddressList(); renderMyReviews(); renderMyReturns();
+  var revBody = document.getElementById('revBody');
+  var revCount = document.getElementById('revCharCount');
+  if (revBody && revCount) revBody.addEventListener('input', function(){ revCount.textContent = revBody.value.length; });
+  }
+  var fm = document.getElementById('footer-mount');
+  if (fm) fm.outerHTML = renderFooter();
+
+  _API  = (function(){ try{return window.DH_API_URL || (function(){try{return localStorage.getItem('detoxy_sheets_url')||'';}catch(e){return '';}})()||'';}catch(e){return '';} })();
+  _user = _getUser();
+
+  if (!_user) {
+    // Not logged in — redirect to login
+    window.location.href = '/login.html?redirect=' + encodeURIComponent(window.location.pathname);
+    return;
+  }
+
+  // Show dashboard
+  document.getElementById('authGuard').style.display = 'none';
+  document.getElementById('accWrap').style.display    = 'grid';
+
+  // Populate sidebar
+  var initials = (_user.name || _user.email || '?').split(' ').map(function(w){return w[0];}).join('').toUpperCase().slice(0,2);
+  document.getElementById('accAvatar').textContent       = initials;
+  document.getElementById('accName').textContent         = _sanitize(_user.name || 'Customer');
+  document.getElementById('accEmailDisplay').textContent = _sanitize(_user.email || '');
+
+  // Populate profile form
+  document.getElementById('profName').value    = _user.name    || '';
+  document.getElementById('profEmail').value   = _user.email   || '';
+  document.getElementById('profPhone').value   = _user.phone   || '';
+  document.getElementById('profAddress').value = _user.address || '';
+  document.getElementById('profCity').value    = _user.city    || '';
+  document.getElementById('profPin').value     = _user.pincode || '';
+  if (_user.state) document.getElementById('profState').value = _user.state;
+
+  if (_user.loginTime) {
+    document.getElementById('accJoinDate').textContent = 'Session: ' + new Date(_user.loginTime).toLocaleDateString('en-IN');
+  }
+
+  // Pre-fill tracking phone
+  if (_user.phone) document.getElementById('trackPhone').value = _user.phone;
+
+  loadOrders();
+}
+
+// ── Navigation ─────────────────────────────────────────────────────────────
+function showTab(name, btn) {
+  document.querySelectorAll('[id^="tab-"]').forEach(function(el){ el.classList.add('section-hidden'); });
+  document.querySelectorAll('.acc-nav-link').forEach(function(el){ el.classList.remove('active'); });
+  document.getElementById('tab-' + name).classList.remove('section-hidden');
+  if (btn) btn.classList.add('active');
+}
+
+// ── Orders ──────────────────────────────────────────────────────────────────
+var _orders = [];
+
+function loadOrders() {
+  if (!_API || !_user) {
+    renderOrders([]);
+    return;
+  }
+  // Use getUserOrders — public endpoint, returns only this customer's orders
+  var url = _API + '?action=getUserOrders'
+    + '&email=' + encodeURIComponent(_user.email || '')
+    + '&phone=' + encodeURIComponent(_user.phone || '');
+
+  fetch(url, { redirect: 'follow', mode: 'cors' })
+    .then(function(r){ if(!r.ok && r.status !== 0) throw new Error('HTTP '+r.status); return r.text(); })
+    .then(function(text){
+      var clean = text.replace(/^﻿/, '').trim();
+      var d; try { d = JSON.parse(clean); } catch(e) { d = {}; }
+      _orders = d.orders || [];
+      // Also check localStorage for orders placed in this browser session
+      try {
+        var localOrder = JSON.parse(localStorage.getItem('dh_last_order') || 'null');
+        if (localOrder && localOrder.orderId) {
+          var alreadyIn = _orders.some(function(o){
+            return String(o.order_id) === String(localOrder.orderId);
+          });
+          if (!alreadyIn) {
+            // Add local order as pending so customer sees it immediately
+            _orders.unshift({
+              order_id: localOrder.orderId,
+              name: localOrder.name || '',
+              phone: localOrder.phone || '',
+              email: localOrder.email || '',
+              items: JSON.stringify(localOrder.items || []),
+              subtotal: localOrder.subtotal || 0,
+              shipping: 0,
+              total: localOrder.total || 0,
+              payment: localOrder.payment || 'cod',
+              status: 'pending',
+              shipping_status: 'pending',
+              date: localOrder.date || new Date().toISOString(),
+              address: localOrder.address || '',
+              city: localOrder.city || '',
+              state: localOrder.state || '',
+              pincode: localOrder.pincode || ''
+            });
+          }
+        }
+      } catch(e) {}
+      renderOrders(_orders);
+      updateStats(_orders);
+    })
+    .catch(function(e) {
+      console.warn('[Detoxy] loadOrders failed:', e.message);
+      // Fallback: show local order from localStorage if available
+      var fallback = [];
+      try {
+        var localOrder = JSON.parse(localStorage.getItem('dh_last_order') || 'null');
+        if (localOrder && localOrder.orderId) {
+          fallback = [{
+            order_id: localOrder.orderId,
+            name: localOrder.name || '',
+            total: localOrder.total || 0,
+            payment: localOrder.payment || 'cod',
+            status: 'pending',
+            date: localOrder.date || new Date().toISOString(),
+            items: JSON.stringify(localOrder.items || [])
+          }];
+        }
+      } catch(ex) {}
+      renderOrders(fallback);
+    });
+}
+
+function updateStats(orders) {
+  document.getElementById('totalOrdersCount').textContent   = orders.length;
+  var pending = orders.filter(function(o){ return o.status !== 'delivered' && o.status !== 'cancelled'; }).length;
+  document.getElementById('pendingOrdersCount').textContent  = pending;
+  var spent = orders.filter(function(o){ return o.status !== 'cancelled'; })
+    .reduce(function(s,o){ return s + (Number(o.total)||0); }, 0);
+  document.getElementById('totalSpentAmount').textContent    = spent > 0 ? '₹' + spent.toLocaleString('en-IN') : '₹0';
+  if (pending > 0) document.getElementById('ordersBadge').style.display = 'block';
+
+  // Recent orders in overview
+  var recentHtml = orders.slice(0, 3).map(function(o){ return renderOrderRow(o, true); }).join('');
+  document.getElementById('recentOrdersList').innerHTML = recentHtml ||
+    '<p style="color:var(--muted);font-size:.84rem">No orders yet. <a href="/products.html" style="color:var(--t)">Start shopping →</a></p>';
+}
+
+function renderOrders(orders) {
+  var el = document.getElementById('ordersContent');
+  if (!orders.length) {
+    el.innerHTML = '<div class="empty-state-acc"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/></svg><p>No orders found.</p><a href="/products.html" class="btn btn-primary" style="margin-top:14px">Shop Now</a></div>';
+    return;
+  }
+  el.innerHTML = '<div style="overflow-x:auto"><table class="orders-table"><thead><tr><th>Order ID</th><th>Items</th><th>Total</th><th>Status</th><th>Date</th><th></th></tr></thead><tbody>' +
+    orders.map(function(o){ return renderOrderRow(o, false); }).join('') + '</tbody></table></div>';
+}
+
+function renderOrderRow(o, mini) {
+  var d = o.date ? new Date(o.date).toLocaleDateString('en-IN') : '—';
+  var itemsStr = '—';
+  if (o.items) {
+    try {
+      var iArr = Array.isArray(o.items) ? o.items : JSON.parse(o.items);
+      if (Array.isArray(iArr)) {
+        var full = iArr.map(function(i){ return _sanitize(String(i.name||i.id||'')) + ' x' + Number(i.qty||1); }).join(', ');
+        itemsStr = full.length > 40 ? full.substring(0,40) + '…' : full;
+      } else { itemsStr = _sanitize(String(o.items).substring(0,40)); }
+    } catch(e) { itemsStr = _sanitize(String(o.items).substring(0,40)); }
+  }
+  var items = itemsStr;
+
+  // ── Shipping quote badge / confirm button ──────────────────────────────
+  var shippingBadge = '';
+  if (o.shipping_status === 'quoted' && o.status !== 'confirmed' && o.status !== 'dispatched' && o.status !== 'delivered') {
+    shippingBadge = '<span style="background:#fef3c7;color:#92400e;border:1px solid #f59e0b;border-radius:50px;font-size:.65rem;font-weight:700;padding:2px 8px;margin-left:6px">Shipping Quoted</span>' +
+      '<button class="btn btn-primary btn-sm" style="margin-left:8px;padding:5px 12px;font-size:.75rem" onclick="confirmShippingFromAccount(\'' + _sanitize(String(o.order_id)) + '\')">' +
+      '&#10003; Confirm</button>';
+  } else if (!o.shipping_status || o.shipping_status === 'pending') {
+    if (o.status === 'pending' || o.status === 'quoted') {
+      shippingBadge = '<span style="background:#fffbeb;color:#b45309;font-size:.65rem;font-weight:600;padding:2px 8px;border-radius:50px;border:1px solid #fcd34d;margin-left:6px">Shipping Pending</span>';
+    }
+  }
+
+  // Validate tracking URL — only allow http(s) protocols, block javascript: and data:
+  function _safeHref(url) {
+    if (!url) return '';
+    var t = String(url).trim();
+    if (!/^https?:\/\//i.test(t)) return '';
+    try { return new URL(t).href; } catch(e) { return ''; }
+  }
+  var _safeTrackUrl = _safeHref(o.tracking_url);
+  var trackBtn = _safeTrackUrl
+    ? '<a href="' + _sanitize(_safeTrackUrl) + '" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Track</a>'
+    : '<button class="btn btn-outline btn-sm" onclick="quickTrack(\'' + _sanitize(o.order_id) + '\')">Track</button>';
+
+  if (mini) {
+    return '<div style="display:flex;justify-content:space-between;align-items:flex-start;padding:11px 0;border-bottom:1px solid var(--border)">' +
+      '<div><div style="font-weight:600;font-size:.84rem">' + _sanitize(String(o.order_id)) + '</div><div style="font-size:.76rem;color:var(--muted)">' + d + '</div>' + (shippingBadge ? '<div style="margin-top:5px">' + shippingBadge + '</div>' : '') + '</div>' +
+      '<div style="text-align:right"><div style="font-weight:700">₹' + Number(o.total||0).toLocaleString('en-IN') + '</div><span class="status-badge status-' + (o.status||'pending') + '">' + (o.status||'pending') + '</span></div></div>';
+  }
+  return '<tr><td style="font-family:monospace;font-size:.8rem">' + _sanitize(String(o.order_id)) + '</td><td style="max-width:160px;font-size:.78rem">' + _sanitize(items) + '</td>' +
+    '<td><strong>₹' + Number(o.total||0).toLocaleString('en-IN') + '</strong></td>' +
+    '<td><span class="status-badge status-' + (o.status||'pending') + '">' + (o.status||'pending') + '</span>' + shippingBadge + '</td>' +
+    '<td style="font-size:.76rem">' + d + '</td>' +
+    '<td style="white-space:nowrap">' + trackBtn +
+    ' <button class="btn btn-outline btn-sm" onclick="downloadInvoiceFromAccount(\'' + _sanitize(String(o.order_id)) + '\')" title="Download Invoice" style="padding:5px 8px">' +
+    '<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>' +
+    '</button>' +
+    '</td></tr>';
+}
+
+function confirmShippingFromAccount(orderId) {
+  var apiUrl = window.DH_API_URL || (function(){ try { return localStorage.getItem('detoxy_sheets_url')||''; } catch(e){ return ''; }}());
+  if (!apiUrl) { showToast('Please contact us on WhatsApp to confirm.', 'error'); return; }
+  if (!confirm('Confirm your order and approve the quoted shipping amount?')) return;
+  fetch(apiUrl, {
+    method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ action: 'respondShipping', order_id: orderId, response: 'accepted' }),
+    redirect: 'follow', mode: 'cors'
+  }).then(function(r){ if(!r.ok && r.status !== 0) throw new Error('HTTP '+r.status); return r.text(); }).then(function(text){
+    var clean = text.replace(/^\uFEFF/,'').trim();
+    var data; try { data = JSON.parse(clean); } catch(e) { data = {}; }
+    if (data.success || data.ok) {
+      showToast('Order #' + orderId + ' confirmed! We will dispatch soon.', 'success');
+      // Reload orders after short delay
+      setTimeout(function() {
+        var url = window.DH_API_URL || (function(){ try { return localStorage.getItem('detoxy_sheets_url')||''; } catch(e){ return ''; }}());
+        var user; try { user = JSON.parse(localStorage.getItem('dh_user')||'null'); } catch(e){}
+        if (url && user) {
+          fetch(url + '?action=getUserOrders&email=' + encodeURIComponent(user.email||'') + '&phone=' + encodeURIComponent(user.phone||''), { redirect:'follow', mode:'cors' })
+            .then(function(r){ if(!r.ok && r.status !== 0) throw new Error('HTTP '+r.status); return r.text(); }).then(function(t){
+              var c = t.replace(/^\uFEFF/,'').trim();
+              var d; try { d = JSON.parse(c); } catch(e){ return; }
+              if (d && d.orders) { _orders = d.orders; renderOrders(d.orders); }
+            }).catch(function(){});
+        }
+      }, 800);
+    } else {
+      showToast(data.error || 'Could not confirm. Please try again or contact WhatsApp.', 'error');
+    }
+  }).catch(function(){ showToast('Connection error. Please try WhatsApp.', 'error'); });
+}
+
+function downloadInvoiceFromAccount(orderId) {
+  // First try to find the order in _orders array loaded from API
+  var o = (_orders||[]).find(function(x){ return String(x.order_id) === String(orderId); });
+
+  // Fallback to localStorage last order
+  if (!o) {
+    try {
+      var lo = JSON.parse(localStorage.getItem('dh_last_order')||'null');
+      if (lo && String(lo.orderId) === String(orderId)) {
+        o = { order_id: lo.orderId, name: lo.name, phone: lo.phone, email: lo.email,
+               address: lo.address, city: lo.city, state: lo.state, pincode: lo.pincode,
+               items: lo.items, subtotal: lo.subtotal, shipping: lo.shipping||0,
+               total: lo.total, payment: lo.payment, status: lo.status||'pending', date: lo.date,
+               couponDiscount: lo.couponDiscount||0 };
+      }
+    } catch(e) {}
+  }
+  if (!o) { showToast('Order data not available for download', 'error'); return; }
+
+  // Build order object compatible with confirmation page invoice function
+  var items = [];
+  try { items = Array.isArray(o.items) ? o.items : JSON.parse(o.items||'[]'); } catch(e){}
+
+  // Reuse the same invoice generator — inject it here
+  var order = {
+    orderId: o.order_id, name: o.name, phone: o.phone, email: o.email,
+    address: o.address, city: o.city, state: o.state, pincode: o.pincode,
+    items: items, subtotal: Number(o.subtotal||o.total||0),
+    shipping: Number(o.shipping||0), total: Number(o.total||0),
+    payment: o.payment||'cod', status: o.status||'pending',
+    date: o.date||new Date().toISOString(), couponDiscount: Number(o.couponDiscount||0)
+  };
+
+  var _esc = function(v){ return String(v||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+  var _inr = function(n){ return '₹' + Number(n||0).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2}); };
+  var _date = function(iso){ try { return new Date(iso).toLocaleDateString('en-IN', {day:'2-digit',month:'long',year:'numeric'}); } catch(e){ return iso||''; } };
+
+  var subtotal = order.subtotal, shipping = order.shipping, discount = order.couponDiscount, total = order.total;
+  var payLabel = order.payment === 'cod' ? 'Cash on Delivery' : order.payment === 'neft' ? 'Bank Transfer (NEFT)' : 'Other';
+  var addr = [order.address, order.city, order.state, order.pincode].filter(Boolean).join(', ');
+
+  var itemRows = items.map(function(item, i){
+    var lineTotal = Number(item.price||0) * Number(item.qty||1);
+    return '<tr style="border-bottom:1px solid #e8ecf0">'
+      + '<td style="padding:9px 12px;color:#374151;font-size:13px">' + (i+1) + '</td>'
+      + '<td style="padding:9px 12px;font-size:13px;color:#111827">' + _esc(item.name||item.id) + (item.size ? ' <span style="font-size:11px;background:#f3f4f6;padding:1px 6px;border-radius:4px">' + _esc(item.size) + '</span>' : '') + '</td>'
+      + '<td style="padding:9px 12px;text-align:center;font-size:13px">' + Number(item.qty||1) + '</td>'
+      + '<td style="padding:9px 12px;text-align:right;font-size:13px">' + _inr(item.price||0) + '</td>'
+      + '<td style="padding:9px 12px;text-align:right;font-size:13px;font-weight:600">' + _inr(lineTotal) + '</td>'
+      + '</tr>';
+  }).join('');
+
+  var html = '<!DOCTYPE html><html lang="en-IN"><head><meta charset="UTF-8"><title>Invoice ' + _esc(order.orderId) + ' — Detoxy Hijama</title>'
+    + '<style>@page{size:A4;margin:0}*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#111827;background:#fff;padding:40px}@media print{body{padding:24px}}.logo-area{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:32px;padding-bottom:24px;border-bottom:2px solid #1a3d35}.brand-name{font-size:22px;font-weight:700;color:#1a3d35}.brand-tag{font-size:11px;color:#6b7280;margin-top:2px}.invoice-label{text-align:right}.invoice-label h1{font-size:28px;font-weight:700;color:#1a3d35}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:28px}.info-box h3{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#9ca3af;margin-bottom:8px}.info-box p{font-size:13px;color:#374151;line-height:1.7}.info-box .name{font-size:15px;font-weight:700;color:#111827;margin-bottom:4px}table{width:100%;border-collapse:collapse;margin-bottom:20px}thead tr{background:#1a3d35}thead th{padding:10px 12px;text-align:left;font-size:11px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.05em}thead th:last-child,thead th:nth-child(4){text-align:right}thead th:nth-child(3){text-align:center}.totals{display:flex;justify-content:flex-end;margin-bottom:28px}.totals-box{width:260px}.totals-row{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;color:#374151;border-bottom:1px solid #f3f4f6}.totals-row.grand{font-weight:700;font-size:16px;color:#111827;border-top:2px solid #1a3d35;border-bottom:none;padding-top:10px;margin-top:4px}.footer-note{border-top:1px solid #e5e7eb;padding-top:16px;font-size:11px;color:#9ca3af;line-height:1.7}.status-badge{display:inline-block;padding:3px 10px;border-radius:50px;font-size:11px;font-weight:700;background:#d1fae5;color:#065f46}</style></head><body>'
+    + '<div class="logo-area"><div><div class="brand-name">Detoxy Hijama</div><div class="brand-tag">Professional Hijama Equipment · detoxyhijama.github.io</div></div><div class="invoice-label"><h1>INVOICE</h1><div style="font-size:13px;color:#6b7280;margin-top:4px">' + _esc(order.orderId) + '</div><div style="font-size:12px;color:#6b7280;margin-top:2px">' + _date(order.date) + '</div></div></div>'
+    + '<div class="two-col"><div class="info-box"><h3>Bill To</h3><div class="name">' + _esc(order.name) + '</div><p>' + _esc(order.phone||'') + (order.email ? '<br>' + _esc(order.email) : '') + '<br>' + _esc(addr) + '</p></div>'
+    + '<div class="info-box"><h3>Order Info</h3><p><strong>Order ID:</strong> ' + _esc(order.orderId) + '<br><strong>Date:</strong> ' + _date(order.date) + '<br><strong>Payment:</strong> ' + _esc(payLabel) + '<br><strong>Status:</strong> <span class="status-badge">' + _esc(order.status) + '</span></p></div></div>'
+    + '<table><thead><tr><th style="width:36px">#</th><th>Item</th><th style="width:60px;text-align:center">Qty</th><th style="width:100px">Unit Price</th><th style="width:110px">Amount</th></tr></thead><tbody>' + itemRows + '</tbody></table>'
+    + '<div class="totals"><div class="totals-box"><div class="totals-row"><span>Subtotal</span><span>' + _inr(subtotal) + '</span></div>' + (discount > 0 ? '<div class="totals-row"><span>Discount</span><span style="color:#059669">−' + _inr(discount) + '</span></div>' : '') + '<div class="totals-row"><span>Shipping</span><span>' + (shipping > 0 ? _inr(shipping) : 'Quoted separately') + '</span></div><div class="totals-row grand"><span>Total</span><span>' + _inr(total) + '</span></div></div></div>'
+    + '<div class="footer-note"><strong>Detoxy Hijama</strong> · Madurai, Tamil Nadu · +91 95665 96077 · detoxyhijama@gmail.com<br>Thank you for your order. For returns and queries contact us within 7 days of delivery.<br>This is a computer-generated invoice and does not require a signature.</div>'
+    + '<script src="/assets/js/cookie-consent.js" defer><\/script>'
+    + '</body></html>';
+
+  var w = window.open('', '_blank', 'width=800,height=900');
+  if (!w) { showToast('Allow pop-ups to download invoice', 'error'); return; }
+  w.document.write(html);
+  w.document.close();
+  w.focus();
+  setTimeout(function(){ w.print(); }, 400);
+}
+
+function quickTrack(orderId) {
+  document.getElementById('trackOrderId').value = orderId;
+  showTab('tracking', document.querySelector('.acc-nav-link[onclick*="tracking"]'));
+  trackOrder();
+}
+
+// ── Tracking ────────────────────────────────────────────────────────────────
+function trackOrder() {
+  var orderId = document.getElementById('trackOrderId').value.trim().toUpperCase();
+  var phone   = document.getElementById('trackPhone').value.trim();
+  var resEl   = document.getElementById('trackResult');
+
+  if (!orderId) { resEl.innerHTML = '<div class="acc-alert acc-alert-error">Please enter an Order ID.</div>'; return; }
+
+  resEl.innerHTML = '<div style="color:var(--muted);font-size:.84rem">Looking up order…</div>';
+
+  // First check local orders
+  var localMatch = _orders.find(function(o){ return String(o.order_id).toUpperCase() === orderId; });
+
+  function renderTrackResult(o) {
+    if (!o) { resEl.innerHTML = '<div class="acc-alert acc-alert-error">Order not found. Check the Order ID or phone number.</div>'; return; }
+
+    var statusMap = {pending:0, confirmed:1, dispatched:2, delivered:4};
+    var step = statusMap[o.status] !== undefined ? statusMap[o.status] : 0;
+    var steps = [
+      {label:'Order Placed', icon:'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2'},
+      {label:'Confirmed', icon:'M5 13l4 4L19 7'},
+      {label:'Dispatched', icon:'M8 7h12m0 0l-4-4m4 4l-4 4m0 5H4m0 0l4 4m-4-4l4-4'},
+      {label:'Out for Delivery', icon:'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z'},
+      {label:'Delivered', icon:'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z'}
+    ];
+
+    var stepsHtml = '<div class="track-steps">' + steps.map(function(s, i) {
+      var cls = i < step ? 'done' : (i === step ? 'active' : '');
+      return '<div class="track-step ' + cls + '"><div class="track-dot"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="' + s.icon + '"/></svg></div><div class="track-label">' + s.label + '</div></div>';
+    }).join('') + '</div>';
+
+    var trackInfo = (o.courier_name || o.tracking_number)
+      ? '<div style="background:var(--tp);border-radius:8px;padding:12px 14px;font-size:.82rem;margin-top:12px"><strong>Courier:</strong> ' + _sanitize(o.courier_name||'—') + '&nbsp;&nbsp;<strong>AWB:</strong> ' + _sanitize(o.tracking_number||'—') + (o.tracking_url && String(o.tracking_url).indexOf('http') === 0 ? ' &nbsp;<a href="' + _sanitize(o.tracking_url) + '" target="_blank" rel="noopener noreferrer" style="color:var(--t)">Track →</a>' : '') + '</div>'
+      : '';
+
+    var addr = [o.address,o.city,o.state,o.pincode].filter(Boolean).map(function(v){ return _sanitize(String(v)); }).join(', ');
+      // Whitelist status values to prevent CSS class injection
+  var _safeStatus = ['pending','confirmed','processing','dispatched','out-for-delivery','delivered','cancelled'].indexOf(String(o.status||'')) > -1 ? String(o.status) : 'pending';
+  resEl.innerHTML = '<div class="order-detail-card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><strong>Order ' + _sanitize(String(o.order_id)) + '</strong><span class="status-badge status-' + _safeStatus + '">' + _sanitize(_safeStatus) + '</span></div>' + stepsHtml +
+      '<div class="order-detail-grid" style="margin-top:12px">' +
+      (function(){
+    var fullItems = '—';
+    if (o.items) {
+      try {
+        var iA = Array.isArray(o.items) ? o.items : JSON.parse(o.items);
+        if (Array.isArray(iA)) {
+          fullItems = iA.map(function(i){ return _sanitize((i.name||i.id||'') + ' ×' + (i.qty||1)); }).join('<br>');
+        } else { fullItems = _sanitize(String(o.items)); }
+      } catch(e) { fullItems = _sanitize(String(o.items)); }
+    }
+    return '<div class="od-item"><span class="od-label">Items</span><span style="line-height:1.7">' + fullItems + '</span></div>';
+  })() +
+      '<div class="od-item"><span class="od-label">Total</span><span>₹' + Number(o.total||0).toLocaleString('en-IN') + '</span></div>' +
+      '<div class="od-item"><span class="od-label">Payment</span><span>' + _sanitize((o.payment||'—').toUpperCase()) + '</span></div>' +
+      '<div class="od-item"><span class="od-label">Date</span><span>' + (o.date ? new Date(o.date).toLocaleDateString('en-IN') : '—') + '</span></div>' +
+      (addr ? '<div class="od-item" style="grid-column:1/-1"><span class="od-label">Delivery Address</span><span style="display:block;word-break:break-word;overflow-wrap:anywhere;line-height:1.55">' + _sanitize(addr) + '</span></div>' : '') +
+      '</div>' + trackInfo + '</div>';
+  }
+
+  if (localMatch) { renderTrackResult(localMatch); return; }
+
+  if (!_API) { renderTrackResult(null); return; }
+
+  fetch(_API + '?action=trackOrder&orderId=' + encodeURIComponent(orderId) + '&phone=' + encodeURIComponent(phone), { redirect: 'follow' })
+    .then(function(r){ return r.json(); })
+    .then(function(d){ renderTrackResult(d.order || null); })
+    .catch(function(){ renderTrackResult(null); });
+}
+
+// ── Profile ─────────────────────────────────────────────────────────────────
+function saveProfile() {
+  var name    = document.getElementById('profName').value.trim();
+  var phone   = document.getElementById('profPhone').value.trim();
+  var address = document.getElementById('profAddress').value.trim();
+  var city    = document.getElementById('profCity').value.trim();
+  var state   = document.getElementById('profState').value;
+  var pincode = document.getElementById('profPin').value.trim();
+  var alertEl = document.getElementById('profileAlert');
+
+  // Input validation
+  if (!name || name.length < 2) { alertEl.innerHTML = '<div class="acc-alert acc-alert-error">Please enter a valid name (at least 2 characters).</div>'; return; }
+  if (phone && !/^[6-9]\d{9}$/.test(phone.replace(/\D/g,''))) { alertEl.innerHTML = '<div class="acc-alert acc-alert-error">Please enter a valid 10-digit Indian mobile number.</div>'; return; }
+  if (pincode && !/^\d{6}$/.test(pincode)) { alertEl.innerHTML = '<div class="acc-alert acc-alert-error">Please enter a valid 6-digit PIN code.</div>'; return; }
+
+  // Update local user object — preserve session wrapper (expiresAt, loginTime)
+  _user = Object.assign(_user, { name:name, phone:phone, address:address, city:city, state:state, pincode:pincode });
+  try {
+    var _rawSession = JSON.parse(localStorage.getItem('dh_user') || 'null');
+    if (_rawSession && _rawSession.expiresAt) {
+      // New session format — update the nested user object, keep wrapper intact
+      _rawSession.user = _user;
+      localStorage.setItem('dh_user', JSON.stringify(_rawSession));
+    } else {
+      // Legacy format — write plain object (backward compat)
+      localStorage.setItem('dh_user', JSON.stringify(_user));
+    }
+  } catch(e) {
+    localStorage.setItem('dh_user', JSON.stringify(_user));
+  }
+
+  // Update sidebar
+  document.getElementById('accName').textContent = _sanitize(name);
+  var initials = name.split(' ').map(function(w){return w[0];}).join('').toUpperCase().slice(0,2);
+  document.getElementById('accAvatar').textContent = initials;
+
+  // Update on server if API available
+  if (_API && _user.id) {
+    fetch(_API + '?action=updateUser', {
+      method: 'POST', redirect: 'follow',
+      headers: {'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify({ action:'updateUser', id:_user.id, name:name, phone:phone, address:address, city:city, state:state, pincode:pincode })
+    }).catch(function(){});
+  }
+
+  alertEl.innerHTML = '<div class="acc-alert acc-alert-success">✓ Profile updated successfully.</div>';
+  setTimeout(function(){ alertEl.innerHTML = ''; }, 3000);
+}
+
+// ── Password ────────────────────────────────────────────────────────────────
+function changePassword() {
+  var oldPass = document.getElementById('passOld').value;
+  var newPass = document.getElementById('passNew').value;
+  var confirm = document.getElementById('passConfirm').value;
+  var alertEl = document.getElementById('passAlert');
+
+  if (!oldPass) { alertEl.innerHTML = '<div class="acc-alert acc-alert-error">Please enter your current password.</div>'; return; }
+  if (newPass.length < 8) { alertEl.innerHTML = '<div class="acc-alert acc-alert-error">New password must be at least 8 characters.</div>'; return; }
+  if (newPass !== confirm) { alertEl.innerHTML = '<div class="acc-alert acc-alert-error">Passwords do not match.</div>'; return; }
+  if (oldPass === newPass) { alertEl.innerHTML = '<div class="acc-alert acc-alert-error">New password must be different from current password.</div>'; return; }
+
+  if (!_API) {
+    alertEl.innerHTML = '<div class="acc-alert acc-alert-error">API not configured. Password change requires Google Sheets connection.</div>';
+    return;
+  }
+
+  var btn = event.target;
+  btn.disabled = true; btn.textContent = 'Updating…';
+
+  fetch(_API + '?action=changePassword', {
+    method: 'POST', redirect: 'follow',
+    headers: {'Content-Type':'text/plain;charset=utf-8'},
+    body: JSON.stringify({ action:'changePassword', email:_user.email, oldPassword:oldPass, newPassword:newPass })
+  }).then(function(r){ if(!r.ok && r.status !== 0) throw new Error('HTTP '+r.status); return r.json(); })
+    .then(function(d) {
+      if (d.success) {
+        alertEl.innerHTML = '<div class="acc-alert acc-alert-success">✓ Password changed successfully.</div>';
+        document.getElementById('passOld').value = '';
+        document.getElementById('passNew').value = '';
+        document.getElementById('passConfirm').value = '';
+      } else {
+        alertEl.innerHTML = '<div class="acc-alert acc-alert-error">' + _sanitize(d.error || 'Incorrect current password.') + '</div>';
+      }
+    })
+    .catch(function(){ alertEl.innerHTML = '<div class="acc-alert acc-alert-error">Network error. Please try again.</div>'; })
+    .finally(function(){ btn.disabled = false; btn.textContent = 'Update Password'; });
+}
+
+// ── Logout ───────────────────────────────────────────────────────────────────
+function doLogout() {
+  localStorage.removeItem('dh_user');
+  window.location.href = '/login.html';
+}
+
+
+// ── Address Book ──────────────────────────────────────────────────────────────
+function _getAddresses() { try { return JSON.parse(localStorage.getItem('dh_addresses') || '[]'); } catch(e) { return []; } }
+function _saveAddresses(a) { try { localStorage.setItem('dh_addresses', JSON.stringify(a)); } catch(e) {} }
+
+function renderAddressList() {
+  var list = document.getElementById('addressList'); if (!list) return;
+  var addrs = _getAddresses();
+  if (!addrs.length) {
+    list.innerHTML = '<p style="color:var(--muted);font-size:.88rem">No saved addresses yet. Add one to speed up checkout.</p>';
+    return;
+  }
+  list.innerHTML = addrs.map(function(a, i) {
+    return '<div style="background:var(--cream);border:1.5px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:12px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px">' +
+      '<div>' +
+        '<div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--t);margin-bottom:5px">' + escapeHtml(a.label || 'Address') + '</div>' +
+        '<div style="font-size:.87rem;color:var(--dark);font-weight:600">' + escapeHtml(a.line) + '</div>' +
+        '<div style="font-size:.82rem;color:var(--muted);margin-top:3px">' + escapeHtml(a.city) + ', ' + escapeHtml(a.state) + ' – ' + escapeHtml(a.pin) + '</div>' +
+        (a.phone ? '<div style="font-size:.78rem;color:var(--muted);margin-top:2px">📞 ' + escapeHtml(a.phone) + '</div>' : '') +
+      '</div>' +
+      '<div style="display:flex;gap:8px;flex-shrink:0">' +
+        '<button class="btn btn-outline btn-sm" onclick="editAddress(' + i + ')">Edit</button>' +
+        '<button class="btn btn-sm" style="background:#fee2e2;color:#b91c1c;border:none" onclick="deleteAddress(' + i + ')">Delete</button>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function openAddressModal(idx) {
+  var modal = document.getElementById('addrModal');
+  if (!modal) {
+    // Inject modal if not present
+    var m = document.createElement('div');
+    m.id = 'addrModal';
+    m.innerHTML = '<div style="position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9999;display:flex;align-items:center;justify-content:center" onclick="if(event.target===this)closeAddressModal()">' +
+      '<div style="background:var(--white);border-radius:var(--radius-lg);padding:28px 32px;max-width:480px;width:calc(100% - 32px);position:relative;max-height:90vh;overflow-y:auto">' +
+        '<button onclick="closeAddressModal()" style="position:absolute;top:14px;right:14px;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--muted)" aria-label="Close">&#215;</button>' +
+        '<h3 id="addrModalTitle" style="font-family:Cormorant Garamond,serif;font-size:1.2rem;font-weight:700;color:var(--dark);margin-bottom:20px">Add Address</h3>' +
+        '<input type="hidden" id="addrEditIdx" value="-1"/>' +
+        '<div class="form-group"><label class="form-label" for="addrLabel">Label (e.g. Home, Clinic)</label><input type="text" id="addrLabel" class="form-control" placeholder="Home"/></div>' +
+        '<div class="form-group"><label class="form-label" for="addrLine">Street Address</label><input type="text" id="addrLine" class="form-control" placeholder="House no., street, area"/></div>' +
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">' +
+          '<div class="form-group"><label class="form-label" for="addrCity">City</label><input type="text" id="addrCity" class="form-control"/></div>' +
+          '<div class="form-group"><label class="form-label" for="addrPin">PIN Code</label><input type="text" id="addrPin" class="form-control" maxlength="6"/></div>' +
+        '</div>' +
+        '<div class="form-group"><label class="form-label" for="addrState">State</label><input type="text" id="addrState" class="form-control"/></div>' +
+        '<div class="form-group"><label class="form-label" for="addrPhone">Phone (optional)</label><input type="tel" id="addrPhone" class="form-control"/></div>' +
+        '<div style="display:flex;gap:10px;margin-top:8px">' +
+          '<button class="btn btn-primary" style="flex:1" onclick="saveAddress()">Save Address</button>' +
+          '<button class="btn btn-outline" onclick="closeAddressModal()">Cancel</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+    document.body.appendChild(m);
+  }
+  var addrs = _getAddresses();
+  document.getElementById('addrEditIdx').value = (idx !== undefined) ? idx : -1;
+  document.getElementById('addrModalTitle').textContent = (idx !== undefined) ? 'Edit Address' : 'Add New Address';
+  if (idx !== undefined && addrs[idx]) {
+    var a = addrs[idx];
+    document.getElementById('addrLabel').value = a.label || '';
+    document.getElementById('addrLine').value  = a.line  || '';
+    document.getElementById('addrCity').value  = a.city  || '';
+    document.getElementById('addrPin').value   = a.pin   || '';
+    document.getElementById('addrState').value = a.state || '';
+    document.getElementById('addrPhone').value = a.phone || '';
+  } else {
+    ['addrLabel','addrLine','addrCity','addrPin','addrState','addrPhone'].forEach(function(id){ document.getElementById(id).value = ''; });
+  }
+  document.getElementById('addrModal').style.display = 'flex';
+}
+function closeAddressModal() { var m = document.getElementById('addrModal'); if (m) m.style.display = 'none'; }
+function editAddress(idx)  { openAddressModal(idx); }
+function deleteAddress(idx) {
+  if (!confirm('Delete this address?')) return;
+  var addrs = _getAddresses(); addrs.splice(idx, 1); _saveAddresses(addrs); renderAddressList();
+  showToast('Address deleted', 'default');
+}
+function saveAddress() {
+  var line  = document.getElementById('addrLine').value.trim();
+  var city  = document.getElementById('addrCity').value.trim();
+  var pin   = document.getElementById('addrPin').value.trim();
+  var state = document.getElementById('addrState').value.trim();
+  if (!line || !city || !state) { showToast('Please fill Street, City and State', 'error'); return; }
+  var addrs = _getAddresses();
+  var obj   = {
+    label: document.getElementById('addrLabel').value.trim() || 'Address',
+    line: line, city: city, pin: pin, state: state,
+    phone: document.getElementById('addrPhone').value.trim()
+  };
+  var idx = parseInt(document.getElementById('addrEditIdx').value);
+  if (idx >= 0) { addrs[idx] = obj; } else { addrs.push(obj); }
+  _saveAddresses(addrs);
+  closeAddressModal();
+  renderAddressList();
+  showToast('Address saved ✓', 'success');
+}
+
+// ── Reviews ────────────────────────────────────────────────────────────────
+var _selectedRating = 0;
+
+function setRating(n) {
+  _selectedRating = n;
+  document.getElementById('revRating').value = n;
+  document.querySelectorAll('.star-pick').forEach(function(s, i) {
+    s.textContent = i < n ? '★' : '☆';
+    s.style.color  = i < n ? '#f59e0b' : 'var(--muted)';
+  });
+}
+
+function _populateProductSelect() {
+  var sel = document.getElementById('revProduct'); if (!sel) return;
+  sel.innerHTML = '<option value="">Select a product...</option>' +
+    PRODUCTS.map(function(p) { return '<option value="' + escapeHtml(p.id) + '">' + escapeHtml(p.name) + '</option>'; }).join('');
+}
+
+function submitReview() {
+  var product = document.getElementById('revProduct').value;
+  var rating  = parseInt(document.getElementById('revRating').value);
+  var title   = document.getElementById('revTitle').value.trim();
+  var body    = document.getElementById('revBody').value.trim();
+  var alertEl = document.getElementById('revAlert');
+
+  if (!product) { showToast('Please select a product', 'error'); return; }
+  if (!rating)  { showToast('Please select a rating', 'error'); return; }
+  if (!title || title.length < 3) { showToast('Please enter a review title', 'error'); return; }
+  if (!body  || body.length  < 10) { showToast('Please write at least 10 characters', 'error'); return; }
+
+  var u = getLoggedInUser(); if (!u) return;
+  var review = {
+    id: Date.now().toString(36),
+    productId: product,
+    productName: (PRODUCTS.find(function(p){ return p.id===product; }) || {}).name || product,
+    rating: rating, title: title, body: body,
+    name: u.name || u.email, date: new Date().toISOString()
+  };
+
+  // Save locally
+  try {
+    var reviews = JSON.parse(localStorage.getItem('dh_reviews') || '[]');
+    reviews.unshift(review);
+    localStorage.setItem('dh_reviews', JSON.stringify(reviews.slice(0, 50)));
+  } catch(e) {}
+
+  // POST to GAS if configured
+  var apiUrl = window.DH_API_URL || '';
+  if (apiUrl) {
+    fetch(apiUrl, {
+      method: 'POST', redirect: 'follow',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ action: 'submitReview', review: review, userId: u.id, email: u.email })
+    }).catch(function(){});
+  }
+
+  alertEl.style.display = 'block';
+  alertEl.innerHTML = '<div class="acc-alert acc-alert-success">✓ Thank you! Your review has been submitted for moderation.</div>';
+  document.getElementById('revProduct').value = '';
+  document.getElementById('revTitle').value   = '';
+  document.getElementById('revBody').value    = '';
+  setRating(0);
+  renderMyReviews();
+}
+
+function renderMyReviews() {
+  var el = document.getElementById('myReviewsList'); if (!el) return;
+  try {
+    var reviews = JSON.parse(localStorage.getItem('dh_reviews') || '[]');
+    if (!reviews.length) { el.innerHTML = ''; return; }
+    el.innerHTML = '<h4 style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:12px">Your Submitted Reviews</h4>' +
+      reviews.map(function(r) {
+        return '<div style="background:var(--cream);border-radius:10px;padding:14px 16px;margin-bottom:10px">' +
+          '<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">' +
+            '<div>' +
+              '<div style="font-size:.75rem;color:var(--t);font-weight:700;margin-bottom:4px">' + escapeHtml(r.productName) + '</div>' +
+              '<div style="color:#f59e0b;font-size:.9rem">' + '★'.repeat(r.rating) + '☆'.repeat(5-r.rating) + '</div>' +
+            '</div>' +
+            '<div style="font-size:.72rem;color:var(--muted)">' + new Date(r.date).toLocaleDateString('en-IN') + '</div>' +
+          '</div>' +
+          '<div style="font-size:.85rem;font-weight:600;color:var(--dark);margin-top:8px">' + escapeHtml(r.title) + '</div>' +
+          '<div style="font-size:.82rem;color:var(--muted);margin-top:4px;line-height:1.6">' + escapeHtml(r.body) + '</div>' +
+        '</div>';
+      }).join('');
+  } catch(e) {}
+}
+
+// ── Returns / Refunds ─────────────────────────────────────────────────────
+function submitReturnRequest() {
+  var orderId  = document.getElementById('retOrderId').value.trim();
+  var product  = document.getElementById('retProduct').value.trim();
+  var reason   = document.getElementById('retReason').value;
+  var details  = document.getElementById('retDetails').value.trim();
+  var refund   = document.getElementById('retRefundMethod').value;
+  var alertEl  = document.getElementById('retAlert');
+
+  if (!orderId)  { showToast('Please enter your Order ID', 'error'); return; }
+  if (!product)  { showToast('Please specify the product(s)', 'error'); return; }
+  if (!reason)   { showToast('Please select a reason', 'error'); return; }
+  if (!refund)   { showToast('Please select a refund method', 'error'); return; }
+
+  var u = getLoggedInUser(); if (!u) return;
+  var req = {
+    id: 'RET-' + Date.now().toString(36).toUpperCase(),
+    orderId: orderId, product: product, reason: reason, details: details,
+    refundMethod: refund, name: u.name || '', email: u.email,
+    date: new Date().toISOString(), status: 'Submitted'
+  };
+
+  try {
+    var reqs = JSON.parse(localStorage.getItem('dh_returns') || '[]');
+    reqs.unshift(req);
+    localStorage.setItem('dh_returns', JSON.stringify(reqs.slice(0, 20)));
+  } catch(e) {}
+
+  var apiUrl = window.DH_API_URL || '';
+  if (apiUrl) {
+    fetch(apiUrl, {
+      method: 'POST', redirect: 'follow',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ action: 'submitReturn', request: req })
+    }).catch(function(){});
+  }
+
+  // Also offer WhatsApp fallback
+  var waMsg = 'Return Request ' + req.id + '\nOrder: ' + orderId + '\nProduct: ' + product + '\nReason: ' + reason;
+  alertEl.style.display = 'block';
+  alertEl.innerHTML = '<div class="acc-alert acc-alert-success">✓ Return request <strong>' + req.id + '</strong> submitted! We will contact you within 24 hours. ' +
+    '<a href="https://wa.me/919566596077?text=' + encodeURIComponent(waMsg) + '" target="_blank" rel="noopener" style="color:var(--t);font-weight:700">Follow up on WhatsApp →</a></div>';
+
+  ['retOrderId','retProduct','retDetails'].forEach(function(id){ document.getElementById(id).value = ''; });
+  document.getElementById('retReason').value = '';
+  document.getElementById('retRefundMethod').value = '';
+  renderMyReturns();
+}
+
+function renderMyReturns() {
+  var el = document.getElementById('myReturnsList'); if (!el) return;
+  try {
+    var reqs = JSON.parse(localStorage.getItem('dh_returns') || '[]');
+    if (!reqs.length) { el.innerHTML = ''; return; }
+    el.innerHTML = '<h4 style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:12px">Your Return Requests</h4>' +
+      reqs.map(function(r) {
+        return '<div style="background:var(--cream);border-radius:10px;padding:14px 16px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px">' +
+          '<div>' +
+            '<div style="font-size:.7rem;font-weight:700;color:var(--t);margin-bottom:3px">' + escapeHtml(r.id) + '</div>' +
+            '<div style="font-size:.84rem;font-weight:600;color:var(--dark)">' + escapeHtml(r.product) + '</div>' +
+            '<div style="font-size:.78rem;color:var(--muted);margin-top:2px">Order: ' + escapeHtml(r.orderId) + ' · ' + escapeHtml(r.reason) + '</div>' +
+          '</div>' +
+          '<span style="font-size:.72rem;background:#d1fae5;color:#065f46;padding:3px 10px;border-radius:50px;font-weight:700;flex-shrink:0">' + escapeHtml(r.status) + '</span>' +
+        '</div>';
+      }).join('');
+  } catch(e) {}
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', _dhInit);
+} else {
+  _dhInit();
+}
+</script>
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js',{scope:'/',updateViaCache:'none'})
+      .then(function(reg){
+        // Check for updates every 60s (catches new deployments)
+        // Smart SW update: check every 5min + on visibility change
+        setInterval(function(){ reg.update().catch(function(){}); }, 300000);
+        document.addEventListener('visibilitychange', function(){ if(document.visibilityState==='active') reg.update().catch(function(){}); });
+      }).catch(function(){});
+  });
+}
+</script>
+<script src="/assets/js/security.js" defer></script>
+</body>
+</html>

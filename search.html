@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="dns-prefetch" href="https://script.google.com"/>
+  <link rel="preconnect" href="https://script.google.com"/>
+  <link rel="dns-prefetch" href="https://script.googleusercontent.com"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me;"/>
+  <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#1a3938"/>
+  <title>Search Results | Detoxy Hijama</title>
+  <meta name="description" content="Search hijama cups, cupping kits, electric devices and consumables at Detoxy Hijama."/>
+  <meta name="robots" content="noindex,follow"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700&family=Outfit:wght@300;400;500;600;700&display=swap"/>
+  <link rel="manifest" href="/manifest.json"/>
+  <link rel="stylesheet" href="/assets/style.css"/>
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png"/>
+  <link rel="apple-touch-icon" href="/assets/images/logo-192.png"/>
+  <style>
+    .search-hero{padding:40px 0 28px;background:var(--cream);border-bottom:1px solid var(--border)}
+    .search-bar-wrap{display:flex;gap:0;max-width:620px;margin:16px 0 0}
+    #searchPageInput{flex:1;padding:13px 18px;border:2px solid var(--border);border-right:none;border-radius:var(--radius-sm) 0 0 var(--radius-sm);font-size:.95rem;font-family:var(--font-sans);background:var(--white);color:var(--text);outline:none;transition:border-color .2s}
+    #searchPageInput:focus{border-color:var(--t)}
+    #searchPageBtn{padding:13px 22px;background:var(--t);color:#fff;border:none;border-radius:0 var(--radius-sm) var(--radius-sm) 0;font-size:.88rem;font-weight:700;cursor:pointer;font-family:var(--font-sans);transition:background .2s}
+    #searchPageBtn:hover{background:var(--td)}
+    .search-filters{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 0}
+    .sf-chip{padding:7px 16px;border-radius:50px;border:1.5px solid var(--border);background:var(--white);font-size:.78rem;font-weight:600;color:var(--muted);cursor:pointer;transition:var(--transition)}
+    .sf-chip:hover,.sf-chip.active{border-color:var(--t);background:var(--tp);color:var(--td)}
+    .search-meta{font-size:.83rem;color:var(--muted);margin:20px 0 4px}
+    .search-meta strong{color:var(--dark)}
+    .search-sort{display:flex;align-items:center;gap:10px;justify-content:space-between;flex-wrap:wrap;margin-bottom:20px}
+    .sort-select{padding:7px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:.82rem;font-family:var(--font-sans);color:var(--text);background:var(--white);cursor:pointer}
+    .no-results{text-align:center;padding:60px 20px}
+    .no-results-icon{width:64px;height:64px;margin:0 auto 16px;color:var(--muted);opacity:.5}
+    .no-results h3{font-family:var(--font-serif);font-size:1.4rem;color:var(--dark);margin-bottom:8px}
+    .no-results p{color:var(--muted);font-size:.9rem;line-height:1.7;margin-bottom:20px}
+    .suggestions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+    .sug-tag{padding:6px 14px;background:var(--cream);border-radius:50px;font-size:.8rem;color:var(--td);cursor:pointer;border:1px solid var(--border);transition:var(--transition)}
+    .sug-tag:hover{background:var(--tp);border-color:var(--t)}
+    #searchGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+    .search-page-content{padding:32px 0 80px}
+  </style>
+</head>
+<body>
+<script src="/assets/js/monitor.js" defer></script>
+<div id="header-mount"></div>
+
+<div class="search-hero">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/index.html">Home</a>
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      <span aria-current="page">Search</span>
+    </nav>
+    <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:700;color:var(--dark);margin-top:8px">Search Products</h1>
+    <form class="search-bar-wrap" onsubmit="runSearch(event)">
+      <input type="search" id="searchPageInput" placeholder="Search hijama cups, kits, consumables…" autocomplete="off" aria-label="Search products"/>
+      <button type="submit" id="searchPageBtn" aria-label="Search">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" style="width:18px;height:18px"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+    </form>
+    <div class="search-filters" id="searchFilters">
+      <button class="sf-chip active" data-cat="" onclick="filterCat('',this)">All</button>
+      <button class="sf-chip" data-cat="cups" onclick="filterCat('cups',this)">Cupping Sets</button>
+      <button class="sf-chip" data-cat="kits" onclick="filterCat('kits',this)">Starter Kits</button>
+      <button class="sf-chip" data-cat="electric" onclick="filterCat('electric',this)">Electric</button>
+      <button class="sf-chip" data-cat="facial" onclick="filterCat('facial',this)">Facial Cups</button>
+      <button class="sf-chip" data-cat="consumables" onclick="filterCat('consumables',this)">Consumables</button>
+    </div>
+  </div>
+</div>
+
+<div class="container search-page-content">
+  <div class="search-sort">
+    <div class="search-meta" id="searchMeta"></div>
+    <select class="sort-select" id="sortSelect" onchange="renderResults()" aria-label="Sort results">
+      <option value="relevance">Sort: Relevance</option>
+      <option value="price-asc">Price: Low to High</option>
+      <option value="price-desc">Price: High to Low</option>
+      <option value="rating">Highest Rated</option>
+      <option value="reviews">Most Reviewed</option>
+    </select>
+  </div>
+  <div id="searchGrid"></div>
+</div>
+
+<div id="footer-mount"></div>
+
+<script src="/assets/js/shared.js" defer></script>
+<script>
+var _query = '';
+var _catFilter = '';
+var _results = [];
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Mount header/footer
+  var hm = document.getElementById('header-mount');
+  var fm = document.getElementById('footer-mount');
+  if (hm) hm.innerHTML = renderHeader('');
+  if (fm) fm.innerHTML = renderFooter();
+  initMobileNav();
+  updateNavAuthLink();
+  Cart.updateUI();
+  Wishlist.updateUI();
+  initScrollTop();
+  initSearch();
+
+  // Read query from URL ?q=
+  var params = new URLSearchParams(window.location.search);
+  var q = (params.get('q') || '').trim();
+  var cat = (params.get('cat') || '').trim();
+
+  if (cat) {
+    _catFilter = cat;
+    document.querySelectorAll('.sf-chip').forEach(function(c) {
+      c.classList.toggle('active', c.dataset.cat === cat);
+    });
+  }
+
+  if (q) {
+    document.getElementById('searchPageInput').value = q;
+    _query = q;
+    _doSearch();
+  } else if (cat) {
+    _catFilter = cat;
+    _doSearch();
+  } else {
+    // No query — show all products
+    _results = PRODUCTS.slice();
+    renderResults();
+  }
+
+  // Re-render when live products loaded
+  document.addEventListener('productsUpdated', function() {
+    _doSearch();
+  });
+});
+
+function runSearch(e) {
+  if (e) e.preventDefault();
+  var q = document.getElementById('searchPageInput').value.trim();
+  _query = q;
+  // Update URL without reload
+  var url = new URL(window.location);
+  if (q) url.searchParams.set('q', q); else url.searchParams.delete('q');
+  if (_catFilter) url.searchParams.set('cat', _catFilter); else url.searchParams.delete('cat');
+  history.replaceState(null, '', url.toString());
+  _doSearch();
+}
+
+function filterCat(cat, btn) {
+  _catFilter = cat;
+  document.querySelectorAll('.sf-chip').forEach(function(c) { c.classList.remove('active'); });
+  if (btn) btn.classList.add('active');
+  var url = new URL(window.location);
+  if (cat) url.searchParams.set('cat', cat); else url.searchParams.delete('cat');
+  history.replaceState(null, '', url.toString());
+  _doSearch();
+}
+
+function _doSearch() {
+  var q = _query;
+  var base = _catFilter ? PRODUCTS.filter(function(p){ return p.category === _catFilter; }) : PRODUCTS;
+
+  if (!q || q.length < 2) {
+    _results = base.slice();
+  } else {
+    // Use DHIntel smart search filtered to category
+    var scored = base.map(function(p) {
+      var name  = (p.name||'').toLowerCase();
+      var cat   = (p.categoryLabel||'').toLowerCase();
+      var desc  = (p.shortDesc||'').toLowerCase();
+      var tags  = (p.tags||[]).join(' ').toLowerCase();
+      var qLow  = q.toLowerCase();
+      var score = 0;
+      if (name.includes(qLow))   score += 60;
+      if (cat.includes(qLow))    score += 30;
+      if (desc.includes(qLow))   score += 20;
+      if (tags.includes(qLow))   score += 25;
+      var tokens = qLow.split(/\s+/).filter(function(t){ return t.length > 1; });
+      tokens.forEach(function(t){
+        if (name.includes(t)) score += 12;
+        if (tags.includes(t)) score += 10;
+        if (desc.includes(t)) score += 5;
+      });
+      if (score > 0 && p.isBestseller) score += 8;
+      if (score > 0 && p.stock === 0)  score -= 5;
+      return { p: p, score: score };
+    }).filter(function(x){ return x.score > 0; });
+
+    _results = scored.sort(function(a,b){ return b.score-a.score; }).map(function(x){ return x.p; });
+  }
+  renderResults();
+}
+
+function renderResults() {
+  var sorted = _results.slice();
+  var sort = document.getElementById('sortSelect').value;
+  if (sort === 'price-asc')  sorted.sort(function(a,b){ return a.price-b.price; });
+  if (sort === 'price-desc') sorted.sort(function(a,b){ return b.price-a.price; });
+  if (sort === 'rating')     sorted.sort(function(a,b){ return b.rating-a.rating; });
+  if (sort === 'reviews')    sorted.sort(function(a,b){ return b.reviews-a.reviews; });
+
+  var meta = document.getElementById('searchMeta');
+  var grid = document.getElementById('searchGrid');
+
+  if (!sorted.length) {
+    meta.innerHTML = '';
+    grid.innerHTML = [
+      '<div class="no-results">',
+        '<svg class="no-results-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path stroke-linecap="round" d="M8 11h6M11 8v6"/></svg>',
+        '<h3>No products found</h3>',
+        '<p>Try adjusting your search or browsing by category.</p>',
+        '<div class="suggestions">',
+          ['hijama cups','cupping kit','electric cup','lancet pen','surgical blade','silicone cups','fire cupping'].map(function(s){
+            return '<button class="sug-tag" onclick="document.getElementById(\'searchPageInput\').value=\''+s+'\';_query=\''+s+'\';_doSearch()">'+s+'</button>';
+          }).join(''),
+        '</div>',
+      '</div>'
+    ].join('');
+    return;
+  }
+
+  var qLabel = _query ? ' for <strong>"'+escapeHtml(_query)+'"</strong>' : '';
+  meta.innerHTML = 'Showing <strong>'+sorted.length+'</strong> result'+(sorted.length!==1?'s':'')+qLabel;
+
+  grid.innerHTML = sorted.map(function(p,i){ return renderProductCard(p,i); }).join('');
+  initAnimateOnScroll();
+  Wishlist.updateUI();
+}
+</script>
+<script src="/assets/js/cookie-consent.js" defer></script>
+<script src="/assets/js/security.js" defer></script>
+</body>
+</html>

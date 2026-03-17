@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="dns-prefetch" href="https://script.google.com"/>
+  <link rel="preconnect" href="https://script.google.com"/>
+  <link rel="dns-prefetch" href="https://script.googleusercontent.com"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me;"/>
+  <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#1a3938"/>
+  <title>Sunnah Hijama Dates Calculator 2025–2026 | Detoxy Hijama</title>
+  <meta name="description" content="Interactive Sunnah Hijama dates calculator. Find the recommended 17th, 19th, and 21st of each Islamic Hijri month for cupping therapy."/>
+  <meta name="keywords" content="sunnah hijama dates, hijri calendar hijama, best days for hijama, islamic cupping dates 2025 2026"/>
+  <meta name="robots" content="index,follow"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700&family=Outfit:wght@300;400;500;600;700&display=swap"/>
+  <link rel="manifest" href="/manifest.json"/>
+  <link rel="stylesheet" href="/assets/style.css"/>
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png"/>
+  <style>
+    body { background: var(--cream); }
+    .calc-hero { padding: 48px 0 36px; background: linear-gradient(135deg, var(--dark) 0%, var(--td) 100%); color: #fff; }
+    .calc-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 4vw, 2.5rem); font-weight: 700; margin-bottom: 10px; }
+    .calc-hero p  { opacity: .8; font-size: .95rem; max-width: 560px; line-height: 1.7; }
+    .calc-wrap    { max-width: 860px; margin: -24px auto 0; padding: 0 20px 80px; }
+    .calc-card    { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); }
+    .calc-controls { padding: 28px 32px; border-bottom: 1px solid var(--border); display: flex; gap: 20px; flex-wrap: wrap; align-items: flex-end; }
+    .cc-group     { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 180px; }
+    .cc-group label { font-size: .75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+    .cc-select    { padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 9px; font-size: .9rem; font-family: var(--font-sans); background: var(--white); color: var(--text); cursor: pointer; }
+    .cc-select:focus { outline: none; border-color: var(--t); }
+    .calc-btn     { padding: 12px 28px; background: var(--t); color: #fff; border: none; border-radius: 9px; font-size: .9rem; font-weight: 700; cursor: pointer; font-family: var(--font-sans); transition: background .2s; white-space: nowrap; }
+    .calc-btn:hover { background: var(--td); }
+    .calc-results { padding: 28px 32px; }
+    .hadith-box   { background: var(--cream); border-left: 4px solid var(--t); border-radius: 0 10px 10px 0; padding: 16px 20px; margin-bottom: 28px; font-size: .85rem; color: var(--text); line-height: 1.8; }
+    .hadith-box cite { display: block; font-size: .75rem; color: var(--muted); margin-top: 6px; font-style: normal; }
+    .month-result { margin-bottom: 32px; }
+    .month-title  { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--dark); margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .month-title .hijri-tag { font-size: .72rem; font-weight: 700; background: var(--tp); color: var(--td); padding: 3px 10px; border-radius: 50px; font-family: var(--font-sans); }
+    .dates-grid   { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .date-card    { background: var(--cream); border: 1.5px solid var(--border); border-radius: 12px; padding: 18px 14px; text-align: center; transition: var(--transition); }
+    .date-card:hover { border-color: var(--t); background: var(--tp); }
+    .date-card .hijri-day { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--t); margin-bottom: 6px; }
+    .date-card .gregorian  { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; color: var(--dark); line-height: 1.1; }
+    .date-card .day-name   { font-size: .78rem; color: var(--muted); margin-top: 4px; }
+    .date-card .day-note   { font-size: .7rem; color: var(--t); margin-top: 6px; font-weight: 600; }
+    .date-card.today       { border-color: var(--t); background: var(--tp2); }
+    .date-card.today .gregorian { color: var(--td); }
+    .date-card.passed      { opacity: .5; }
+    .month-divider { height: 1px; background: var(--border); margin: 8px 0 28px; }
+    .no-date-msg   { background: #fef3c7; border: 1px solid #fde68a; border-radius: 10px; padding: 14px 18px; font-size: .83rem; color: #92400e; }
+    .sunnah-note   { background: var(--cream2); border-radius: 10px; padding: 20px 24px; margin-top: 28px; font-size: .83rem; color: var(--text); line-height: 1.8; }
+    .sunnah-note h4 { font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+    .wa-share      { display: inline-flex; align-items: center; gap: 8px; background: #25d366; color: #fff; border: none; border-radius: 8px; padding: 10px 20px; font-size: .83rem; font-weight: 700; cursor: pointer; font-family: var(--font-sans); margin-top: 20px; text-decoration: none; transition: background .2s; }
+    .wa-share:hover { background: #1db956; }
+    @media(max-width: 600px) { .dates-grid { grid-template-columns: 1fr; } .calc-controls { padding: 20px; } .calc-results { padding: 20px; } }
+  </style>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Sunnah Hijama Dates Calculator 2025–2026 | Detoxy Hijama"/>
+  <meta property="og:description" content="Interactive Sunnah Hijama dates calculator. Find the recommended 17th, 19th, and 21st of each Islamic Hijri month for cupping therapy."/>
+  <meta property="og:url" content="https://detoxyhijama.github.io/hijama-dates.html"/>
+  <meta property="og:image" content="https://detoxyhijama.github.io/assets/images/og-image.jpg"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:site_name" content="Detoxy Hijama"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+</head>
+<body>
+<script src="/assets/js/monitor.js" defer></script>
+<div id="header-mount"></div>
+
+<div class="calc-hero">
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb" style="margin-bottom:16px">
+      <a href="/index.html" style="color:rgba(255,255,255,.7)">Home</a>
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      <span style="color:#fff">Sunnah Hijama Dates</span>
+    </nav>
+    <h1>Sunnah Hijama Dates Calculator</h1>
+    <p>Find the recommended Islamic dates for cupping therapy — the 17th, 19th, and 21st of each Hijri month as described in the authentic Sunnah.</p>
+  </div>
+</div>
+
+<div class="calc-wrap">
+  <div class="calc-card">
+    <div class="calc-controls">
+      <div class="cc-group">
+        <label for="hijriMonthSel">Hijri Month</label>
+        <select id="hijriMonthSel" class="cc-select">
+          <option value="all">All Months (Full Year)</option>
+          <option value="1">Muharram (1st)</option>
+          <option value="2">Safar (2nd)</option>
+          <option value="3">Rabi' al-Awwal (3rd)</option>
+          <option value="4">Rabi' al-Thani (4th)</option>
+          <option value="5">Jumada al-Awwal (5th)</option>
+          <option value="6">Jumada al-Thani (6th)</option>
+          <option value="7">Rajab (7th)</option>
+          <option value="8">Sha'ban (8th)</option>
+          <option value="9">Ramadan (9th)</option>
+          <option value="10">Shawwal (10th)</option>
+          <option value="11">Dhu al-Qa'dah (11th)</option>
+          <option value="12">Dhu al-Hijjah (12th)</option>
+        </select>
+      </div>
+      <div class="cc-group">
+        <label for="hijriYearSel">Hijri Year</label>
+        <select id="hijriYearSel" class="cc-select">
+          <option value="1446">1446 AH (2024–2025)</option>
+          <option value="1447" selected>1447 AH (2025–2026)</option>
+          <option value="1448">1448 AH (2026–2027)</option>
+        </select>
+      </div>
+      <button class="calc-btn" onclick="calculate()">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2" style="width:16px;height:16px;display:inline-block;margin-right:6px;vertical-align:-3px"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        Calculate Dates
+      </button>
+    </div>
+    <div class="calc-results" id="calcResults">
+      <div class="hadith-box">
+        <strong>On the authority of Ibn Abbas (RA):</strong> "The Prophet (ﷺ) used to have himself cupped on the 17th, 19th and 21st of the month."
+        <cite>— Sunan Abi Dawud 3861 | Graded Sahih</cite>
+      </div>
+      <p style="color:var(--muted);font-size:.88rem;text-align:center;padding:20px 0">Select a month and year above, then click <strong>Calculate Dates</strong>.</p>
+    </div>
+  </div>
+
+  <!-- Static SEO content -->
+  <div style="margin-top:36px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:28px 32px">
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--dark);margin-bottom:14px">What are Sunnah Hijama Dates?</h2>
+    <p style="font-size:.88rem;line-height:1.9;color:var(--text);margin-bottom:14px">According to authentic hadith literature, the Prophet Muhammad ﷺ recommended performing hijama (wet cupping) on specific dates of the Islamic lunar (Hijri) calendar. The most frequently cited dates are the <strong>17th, 19th, and 21st</strong> of each Hijri month, particularly when these dates fall on a Monday, Tuesday, or Thursday.</p>
+    <p style="font-size:.88rem;line-height:1.9;color:var(--text);margin-bottom:14px">These dates correspond to the latter half of the Islamic month when the moon is still bright — a period traditionally associated with heightened spiritual and physical benefit in Islamic medicine (Tibb Nabawi).</p>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--dark);margin:20px 0 10px">Recommended Days of the Week</h3>
+    <p style="font-size:.88rem;line-height:1.9;color:var(--text)">Classical scholars of Tibb Nabawi recommend Monday, Tuesday, and Thursday as the preferred days for hijama. Friday (Jumu'ah), Saturday, and Sunday are generally avoided according to scholarly opinion, though the evidence for day restrictions is considered weaker than the date evidence.</p>
+  </div>
+</div>
+
+<div id="footer-mount"></div>
+
+<script src="/assets/js/shared.js" defer></script>
+<script>
+/* ──────────────────────────────────────────────
+   Hijri to Gregorian conversion engine
+   Algorithm: Adapted from Khalid Shaukat's algorithm
+   Note: Approximate ±1 day; for exact dates consult
+   a local Islamic authority or moon-sighting committee.
+────────────────────────────────────────────── */
+
+var HIJRI_MONTHS = [
+  '', 'Muharram', 'Safar', "Rabi' al-Awwal", "Rabi' al-Thani",
+  'Jumada al-Awwal', 'Jumada al-Thani', 'Rajab', "Sha'ban",
+  'Ramadan', 'Shawwal', "Dhu al-Qa'dah", 'Dhu al-Hijjah'
+];
+
+var DAY_NAMES = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+// Converts Hijri date to approximate Gregorian date (astronomical calculation)
+function hijriToGregorian(hy, hm, hd) {
+  // JDN of the Hijri date (Tabular Islamic Calendar)
+  var jdn = Math.floor((11 * hy + 3) / 30) + 354 * hy + 30 * hm
+          - Math.floor((hm - 1) / 2) + hd + 1948440 - 385;
+
+  // JDN to Gregorian
+  var l = jdn + 68569;
+  var n = Math.floor((4 * l) / 146097);
+  l = l - Math.floor((146097 * n + 3) / 4);
+  var i = Math.floor((4000 * (l + 1)) / 1461001);
+  l = l - Math.floor((1461 * i) / 4) + 31;
+  var j = Math.floor((80 * l) / 2447);
+  var day = l - Math.floor((2447 * j) / 80);
+  l = Math.floor(j / 11);
+  var month = j + 2 - 12 * l;
+  var year = 100 * (n - 49) + i + l;
+
+  return new Date(year, month - 1, day);
+}
+
+function fmtDate(d) {
+  return d.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+function fmtDateShort(d) {
+  return d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
+}
+
+function calculate() {
+  var hYear  = parseInt(document.getElementById('hijriYearSel').value);
+  var hMonth = document.getElementById('hijriMonthSel').value;
+  var today  = new Date(); today.setHours(0,0,0,0);
+
+  var months = hMonth === 'all' ? [1,2,3,4,5,6,7,8,9,10,11,12] : [parseInt(hMonth)];
+
+  var html = [
+    '<div class="hadith-box">',
+    '<strong>On the authority of Ibn Abbas (RA):</strong> "The Prophet (ﷺ) used to have himself cupped on the 17th, 19th and 21st of the month."',
+    '<cite>— Sunan Abi Dawud 3861 | Graded Sahih</cite>',
+    '</div>'
+  ].join('');
+
+  var shareText = 'Sunnah Hijama Dates (' + hYear + ' AH):\n';
+
+  months.forEach(function(hm) {
+    var sunnahDays = [17, 19, 21];
+    var cards = sunnahDays.map(function(hd) {
+      var gDate = hijriToGregorian(hYear, hm, hd);
+      var dayName = DAY_NAMES[gDate.getDay()];
+      var isSunnahDay = [1,2,4].indexOf(gDate.getDay()) > -1; // Mon, Tue, Thu
+      var isPassed = gDate < today;
+      var isToday  = gDate.getTime() === today.getTime();
+
+      var note = isToday ? '🌟 Today!' : (isSunnahDay ? '✓ Sunnah day' : '⚠ ' + dayName);
+      var cardClass = isToday ? 'date-card today' : (isPassed ? 'date-card passed' : 'date-card');
+
+      shareText += hd + ' ' + HIJRI_MONTHS[hm] + ' → ' + fmtDateShort(gDate) + ' (' + dayName + ')\n';
+
+      return [
+        '<div class="' + cardClass + '">',
+          '<div class="hijri-day">' + hd + ' ' + HIJRI_MONTHS[hm] + '</div>',
+          '<div class="gregorian">' + gDate.getDate() + ' ' + gDate.toLocaleString('en-IN',{month:'short'}) + '</div>',
+          '<div class="day-name">' + gDate.getFullYear() + ' · ' + dayName + '</div>',
+          '<div class="day-note">' + note + '</div>',
+        '</div>'
+      ].join('');
+    });
+
+    html += [
+      '<div class="month-result">',
+        '<div class="month-title">',
+          HIJRI_MONTHS[hm],
+          '<span class="hijri-tag">' + hm + ' / ' + hYear + ' AH</span>',
+        '</div>',
+        '<div class="dates-grid">' + cards.join('') + '</div>',
+      '</div>',
+      '<div class="month-divider"></div>'
+    ].join('');
+  });
+
+  html += [
+    '<div class="sunnah-note">',
+      '<h4>Important Note</h4>',
+      'These dates are calculated using the Tabular Islamic Calendar (astronomical approximation) and may differ by ±1 day from the actual moon-sighted calendar in your region. For precise dates, verify with your local Islamic centre or a reliable Hijri calendar app. The therapeutic benefit of hijama exists throughout the month — the Sunnah dates are recommended but not obligatory.',
+    '</div>',
+    '<a href="https://wa.me/919566596077?text=' + encodeURIComponent('Assalaamu Alaikum! I want to book hijama on the Sunnah dates. Please share availability.') + '" class="wa-share" target="_blank" rel="noopener">',
+      '<svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>',
+      'Book Hijama on Sunnah Dates',
+    '</a>'
+  ].join('');
+
+  document.getElementById('calcResults').innerHTML = html;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var hm = document.getElementById('header-mount');
+  var fm = document.getElementById('footer-mount');
+  if (hm) hm.innerHTML = renderHeader('');
+  if (fm) fm.innerHTML = renderFooter();
+  initMobileNav();
+  updateNavAuthLink();
+  Cart.updateUI();
+  Wishlist.updateUI();
+  initScrollTop();
+  initSearch();
+
+  // Auto-calculate for current year
+  calculate();
+});
+</script>
+<script src="/assets/js/cookie-consent.js" defer></script>
+<script src="/assets/js/security.js" defer></script>
+</body>
+</html>

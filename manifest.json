@@ -1,0 +1,64 @@
+{
+  "name": "Detoxy Hijama",
+  "short_name": "Detoxy",
+  "description": "India's #1 hijama cupping therapy equipment \u2014 premium cups, kits & consumables at factory prices.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8f5f0",
+  "theme_color": "#1a3938",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-IN",
+  "categories": [
+    "shopping",
+    "health",
+    "medical"
+  ],
+  "icons": [
+    {
+      "src": "/assets/images/favicon.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/logo-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/images/logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Shop Products",
+      "short_name": "Products",
+      "url": "/products.html",
+      "description": "Browse all hijama cupping products"
+    },
+    {
+      "name": "My Cart",
+      "short_name": "Cart",
+      "url": "/cart.html",
+      "description": "View your shopping cart"
+    },
+    {
+      "name": "Contact Us",
+      "short_name": "Contact",
+      "url": "/contact.html",
+      "description": "Get in touch with Detoxy Hijama"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/images/og-image.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "label": "Detoxy Hijama \u2014 Premium Cupping Equipment"
+    }
+  ]
+}
